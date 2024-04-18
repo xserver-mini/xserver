@@ -1,0 +1,315 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="17.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="D:\git\xserver\src\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\ctrl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\service\service.cpp">
+      <Filter>core\service</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\service\servicecentor.cpp">
+      <Filter>core\service</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\robot\event.cpp">
+      <Filter>core\robot</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\robot\robot.cpp">
+      <Filter>core\robot</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\robot\robotcentor.cpp">
+      <Filter>core\robot</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\engine\engine.cpp">
+      <Filter>core\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\engine\enginecentor.cpp">
+      <Filter>core\engine</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\socket\eventsocket.cpp">
+      <Filter>core\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\socket\servicesocket.cpp">
+      <Filter>core\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\socket\socketcentor.cpp">
+      <Filter>core\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\socket\socketserver.cpp">
+      <Filter>core\socket</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\timer\servicetimer.cpp">
+      <Filter>core\timer</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\open\opentime.cpp">
+      <Filter>core\open</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\open\openjson.cpp">
+      <Filter>core\open</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\open\opensocket.cpp">
+      <Filter>core\open</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\open\socket_os.c">
+      <Filter>core\open</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\open\openbuffer.cpp">
+      <Filter>core\open</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\open\openfile.cpp">
+      <Filter>core\open</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\utils\logger.cpp">
+      <Filter>core\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\utils\config.cpp">
+      <Filter>core\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\utils\cache.cpp">
+      <Filter>core\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\platform\net.cpp">
+      <Filter>core\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\app.cpp">
+      <Filter>core</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\open\wepoll.c">
+      <Filter>core\open</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\platform\utils-win32.cpp">
+      <Filter>core\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\platform\win32.cpp">
+      <Filter>core\platform</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\service\test\service.cpp">
+      <Filter>service\test</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\service\tcpserver\service.cpp">
+      <Filter>service\tcpserver</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\service\tcpclient\service.cpp">
+      <Filter>service\tcpclient</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\service\udpdevice\service.cpp">
+      <Filter>service\udpdevice</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\service\udpdevice\device.cpp">
+      <Filter>service\udpdevice</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\service\udpport\service.cpp">
+      <Filter>service\udpport</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\service\udpport\device.cpp">
+      <Filter>service\udpport</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\utils\app.cpp">
+      <Filter>utils</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="D:\git\xserver\src\ctrl.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\service\service.h">
+      <Filter>core\service</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\service\servicecentor.h">
+      <Filter>core\service</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\robot\event.h">
+      <Filter>core\robot</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\robot\robot.h">
+      <Filter>core\robot</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\robot\robotcentor.h">
+      <Filter>core\robot</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\engine\engine.h">
+      <Filter>core\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\engine\enginecentor.h">
+      <Filter>core\engine</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\socket\eventsocket.h">
+      <Filter>core\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\socket\servicesocket.h">
+      <Filter>core\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\socket\socketcentor.h">
+      <Filter>core\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\socket\socketserver.h">
+      <Filter>core\socket</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\timer\servicetimer.h">
+      <Filter>core\timer</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\open\opentime.h">
+      <Filter>core\open</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\open\opensocket.h">
+      <Filter>core\open</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\open\socket_os.h">
+      <Filter>core\open</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\open\openbuffer.h">
+      <Filter>core\open</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\open\openjson.h">
+      <Filter>core\open</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\open\openfile.h">
+      <Filter>core\open</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\utils\common.h">
+      <Filter>core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\utils\spinlock.h">
+      <Filter>core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\utils\logger.h">
+      <Filter>core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\utils\config.h">
+      <Filter>core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\utils\tool.h">
+      <Filter>core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\utils\cache.h">
+      <Filter>core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\platform\net.h">
+      <Filter>core\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\app.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\open\wepoll.h">
+      <Filter>core\open</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\platform\utils-win32.h">
+      <Filter>core\platform</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\test\service.h">
+      <Filter>service\test</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\test\handle.h">
+      <Filter>service\test</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\tcpserver\service.h">
+      <Filter>service\tcpserver</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\tcpclient\service.h">
+      <Filter>service\tcpclient</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\udpdevice\service.h">
+      <Filter>service\udpdevice</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\udpdevice\device.h">
+      <Filter>service\udpdevice</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\udpdevice\handle.h">
+      <Filter>service\udpdevice</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\udpdevice\data.h">
+      <Filter>service\udpdevice</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\udpdevice\event.h">
+      <Filter>service\udpdevice</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\udpport\service.h">
+      <Filter>service\udpport</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\udpport\device.h">
+      <Filter>service\udpport</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\udpport\handle.h">
+      <Filter>service\udpport</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\udpport\event.h">
+      <Filter>service\udpport</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\udpport\data.h">
+      <Filter>service\udpport</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\utils\app.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\utils\event.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\utils\events.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\utils\robotid.h">
+      <Filter>utils</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="D:\git\xserver\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{91AAAD61-CB39-3313-B4CD-31228BFA838D}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{1CEB531A-13A5-30F6-9F96-091CA13FD9CC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core">
+      <UniqueIdentifier>{CE002822-3B34-3EA1-927E-C304A77121EF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\engine">
+      <UniqueIdentifier>{9BB93346-503A-35CD-988F-3DAB2D300D18}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\open">
+      <UniqueIdentifier>{DCE8AE69-2512-3916-A3A4-DA10BB312605}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\platform">
+      <UniqueIdentifier>{1A7F4DC4-D7C4-306D-BEA6-49F49F0408E0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\robot">
+      <UniqueIdentifier>{53AB7894-A7C2-33A4-B344-A03C77E3B23B}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\service">
+      <UniqueIdentifier>{654B3F96-712E-3EFE-86BF-91B5949F129A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\socket">
+      <UniqueIdentifier>{B5D7127D-F762-358B-A309-66EC85367211}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\timer">
+      <UniqueIdentifier>{7C9DC123-3B2D-33C5-BC55-C62B38C5F22F}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="core\utils">
+      <UniqueIdentifier>{C861D751-3430-32FE-BCF0-44EDEB559C95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service">
+      <UniqueIdentifier>{87E1A458-8C5E-3ADE-AD06-19A5AD6845E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service\tcpclient">
+      <UniqueIdentifier>{CA045188-99E3-3164-AD31-054564B38ED5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service\tcpserver">
+      <UniqueIdentifier>{1D25CED3-19B3-318E-82B3-0F6CFDC6443C}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service\test">
+      <UniqueIdentifier>{C196D2C3-FC8A-3EC8-A24E-CE11D604278A}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service\udpdevice">
+      <UniqueIdentifier>{E087F3C3-B037-34FD-B60E-68066CCB7DEC}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service\udpport">
+      <UniqueIdentifier>{8AE1AED6-73E3-36EE-AAC4-A82AB82FD362}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="utils">
+      <UniqueIdentifier>{741929D1-EF7E-3EC9-939E-DFF2DCABFA3E}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

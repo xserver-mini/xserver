@@ -12,6 +12,8 @@
 #include "robot/event.h"
 #include <mutex>
 #include <queue>
+#include <thread>
+#include <condition_variable>
 #include "utils/spinlock.h"
 
 class XApp

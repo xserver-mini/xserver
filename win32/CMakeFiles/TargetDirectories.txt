@@ -1,0 +1,3 @@
+D:/git/xserver/win32/CMakeFiles/XServer.dir
+D:/git/xserver/win32/CMakeFiles/ALL_BUILD.dir
+D:/git/xserver/win32/CMakeFiles/ZERO_CHECK.dir

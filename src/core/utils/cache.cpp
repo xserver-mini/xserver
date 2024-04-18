@@ -10,6 +10,8 @@
 #include "common.h"
 #include "../open/openfile.h"
 
+using namespace open;
+
 XCache::XCache(int cellSize)
 	:cellSize_(cellSize)
 {

@@ -9,7 +9,7 @@
 
 #include "servicetimer.h"
 #include "../robot/event.h"
-
+#include "../open/opentime.h"
 
 XServiceTimer::TimerEvent::TimerEvent()
     :isRepeat_(false),

@@ -27,7 +27,6 @@ set(FILE_HPP
 	utils/spinlock.h
 	utils/logger.h
 	utils/config.h
-	utils/tool.h
 	utils/cache.h
 
 	platform/net.h
@@ -72,6 +71,7 @@ if(CMAKE_SYSTEM_NAME MATCHES "Windows")
 
 list(APPEND FILE_HPP open/wepoll.h)
 list(APPEND FILE_CPP open/wepoll.c)
+
 list(APPEND FILE_HPP platform/utils-win32.h)
 list(APPEND FILE_CPP platform/utils-win32.cpp)
 list(APPEND FILE_CPP platform/win32.cpp)
@@ -88,7 +88,11 @@ list(APPEND FILE_CPP platform/android.cpp)
 
 elseif(CMAKE_SYSTEM_NAME MATCHES "Linux")
 
+list(APPEND FILE_CPP platform/linux.cpp)
+
 elseif(CMAKE_SYSTEM_NAME MATCHES "Darwin")
+
+list(APPEND FILE_CPP platform/linux.cpp)
 
 endif()
 

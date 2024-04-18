@@ -1,3 +1,11 @@
+/***************************************************************************
+ * Copyright (C) 2023-, openlinyou, <linyouhappy@foxmail.com>
+ *
+ * You may opt to use, copy, modify, merge, publish, distribute and/or sell
+ * copies of the Software, and permit persons to whom the Software is
+ * furnished to do so, under the terms of the COPYING file.
+ ***************************************************************************/
+
 #include "robot.h"
 #include "event.h"
 #include "robotcentor.h"
@@ -127,9 +135,13 @@ void XRobot::onEvent(const XEvent& event)
 	}
 	if (isCostTime_)
 	{
-		auto currentTS = open::OpenTime::MilliUnixtime();
+		auto duration = std::chrono::system_clock::now().time_since_epoch();
+		auto startTS = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
 		service_->onEvent(event);
-		auto costTS = open::OpenTime::MilliUnixtime() - currentTS;
+
+		duration = std::chrono::system_clock::now().time_since_epoch();
+		auto currentTS = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
+		auto costTS = currentTS - startTS;
 		if (costTS > minCostTime_)
 		{
 			XWARN("task cost too much time:%ld", costTS);

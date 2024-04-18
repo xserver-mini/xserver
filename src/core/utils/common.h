@@ -16,9 +16,4 @@
 #include <unordered_map>
 #include "logger.h"
 #include "config.h"
-#include "tool.h"
-#include "../open/opentime.h"
-#include "../open/openbuffer.h"
-
-using namespace open;
 

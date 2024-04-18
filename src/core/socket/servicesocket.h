@@ -9,8 +9,8 @@
 
 #pragma once
 
-#include "../service/service.h"
 #include "eventsocket.h"
+#include "../service/service.h"
 #include "../open/opensocket.h"
 
 enum EXSocketEvent

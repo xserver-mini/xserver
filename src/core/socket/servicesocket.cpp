@@ -11,7 +11,8 @@
 #include "servicesocket.h"
 #include "socketserver.h"
 #include "../robot/robot.h"
-
+#include "../open/opensocket.h"
+using namespace open;
 
 size_t XUnorderedMapHash::operator()(const XUdpAddress& a) const
 {

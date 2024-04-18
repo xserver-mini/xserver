@@ -47,7 +47,7 @@ void Ctrl::start()
 	//XConfig::GetInstance().load("./config.ini");
 
 	std::string content = "[default]\n"
-						  "console=2\n"
+						  "console=1\n"
 						  "test=1\n"
 						  "action=1\n"
 						  "\n"

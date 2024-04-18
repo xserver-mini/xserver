@@ -48,14 +48,14 @@ endfunction()
 
 include_directories(${X_SRC_PATH})
 
-include(src/service/CMakeLists.txt)
-include(src/utils/CMakeLists.txt)
-include(src/core/CMakeLists.txt)
+include(${X_SRC_PATH}/service/CMakeLists.txt)
+include(${X_SRC_PATH}/utils/CMakeLists.txt)
+include(${X_SRC_PATH}/core/CMakeLists.txt)
 
 add_executable(${PROJECT_NAME} 
-	src/main.cpp
-    src/ctrl.h
-    src/ctrl.cpp
+	${X_SRC_PATH}/main.cpp
+    ${X_SRC_PATH}/ctrl.h
+    ${X_SRC_PATH}/ctrl.cpp
 
     ${X_CORE_SRC}
 	${X_SERVICE_SRC}

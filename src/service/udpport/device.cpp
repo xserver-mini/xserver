@@ -3,6 +3,9 @@
 #include "event.h"
 #include "core/utils/common.h"
 #include "core/platform/net.h"
+#include "core/open/opentime.h"
+
+using namespace open;
 
 namespace UdpPort
 {
@@ -172,14 +175,14 @@ void Device::onOpen(EConnectDetect eDetect, int64_t uuid, const std::string& ip,
 	port_ = port;
 	sendNextIdx_ = 1;
 	receiveIdx_ = 0;
-	lastTime_ = OpenTime::Unixtime();
+	lastTime_ = open::OpenTime::Unixtime();
 	isConnect_ = true;
 
 	auto sevent = new EventUdpState;
 	sevent->estate_ = EUdpStateOpen;
 	sendEvent(sevent);
 
-	if (OpenTime::Unixtime() > lastTime_ + 12)
+	if (open::OpenTime::Unixtime() > lastTime_ + 12)
 	{
 		clearList();
 	}
