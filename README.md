@@ -4,6 +4,14 @@ In the simplest way, Develop C++ high-concurrency server applications.
 XServer is a super simple server framework, developed by the developer over 8 years, to develop C++ server programs in the simplest way. Built with CMake, cross-platform design, it can run on Windows, Linux, Android and other platforms.
 
 
+```
+mkdir build
+cd build
+cmake ..
+cmake --build .
+./XServer
+```
+
 
 以最简单的方式开发C++高并发服务器应用。
 
