@@ -12,15 +12,11 @@ C:/Program Files/CMake/share/cmake-3.26/Modules/Compiler/CMakeCommonCompilerMacr
 C:/Program Files/CMake/share/cmake-3.26/Modules/Compiler/MSVC-C.cmake
 C:/Program Files/CMake/share/cmake-3.26/Modules/Compiler/MSVC-CXX.cmake
 C:/Program Files/CMake/share/cmake-3.26/Modules/Compiler/MSVC.cmake
-C:/Program Files/CMake/share/cmake-3.26/Modules/FindOpenSSL.cmake
-C:/Program Files/CMake/share/cmake-3.26/Modules/FindPackageHandleStandardArgs.cmake
-C:/Program Files/CMake/share/cmake-3.26/Modules/FindPackageMessage.cmake
 C:/Program Files/CMake/share/cmake-3.26/Modules/Platform/Windows-MSVC-C.cmake
 C:/Program Files/CMake/share/cmake-3.26/Modules/Platform/Windows-MSVC-CXX.cmake
 C:/Program Files/CMake/share/cmake-3.26/Modules/Platform/Windows-MSVC.cmake
 C:/Program Files/CMake/share/cmake-3.26/Modules/Platform/Windows.cmake
 C:/Program Files/CMake/share/cmake-3.26/Modules/Platform/WindowsPaths.cmake
-C:/Program Files/CMake/share/cmake-3.26/Modules/SelectLibraryConfigurations.cmake
 D:/git/xserver/CMakeLists.txt
 D:/git/xserver/src/core/CMakeLists.txt
 D:/git/xserver/src/service/CMakeLists.txt

@@ -70,6 +70,6 @@ public:
 
     virtual bool onHttp(XHttpRequest& req, XHttpResponse& rep);
 
-    friend class XHttpResponse;
+    friend struct XHttpResponse;
 };
 

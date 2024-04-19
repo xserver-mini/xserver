@@ -19,8 +19,9 @@
 class XServiceHttpClient : public XServiceSocket
 {
 protected:
-    struct XClient : public XHttpClient
+    class XClient : public XHttpClient
     {
+    public:
         int fd_;
         int robotId_;
         XServiceHttpClient* service_;
