@@ -3,11 +3,11 @@
 #include <iostream>
 #include "utils/event.h"
 
-namespace TcpClient
+namespace HttpClient
 {
 
 Service::Service(XRobot* robot)
-	:XServiceSocket(robot)
+	:XServiceHttpClient(robot)
 {
 	assert(robot);
 }
@@ -29,8 +29,24 @@ void Service::onInit()
 void Service::onStart()
 {
 	XDEBUG("===>>");
-	this->sleep(1000);
-	focusFd_ = connectSocket("127.0.0.1", 51888);
+	this->sleep(3000);
+
+	auto request = createHttp();
+	request->setUrl("http://127.0.0.1:8080/index.html");
+	bool ret = sendHttp(request, [this](XHttpRequest& req, XHttpResponse& resp) {
+		XDEBUG("==>> code:%d", resp.code_);
+		if (!resp.isFinish_)
+		{
+			return;
+		}
+		XDEBUG("==>> head[%d]:%s", resp.head_.size(), resp.head_.data());
+		XDEBUG("==>> body[%d]:%s", resp.body_.size(), resp.body_.data());
+	});
+
+	if (!ret)
+	{
+		XINFO("sendHttp url failed. %s", request->url_.data());
+	}
 }
 
 void Service::onStop()
@@ -38,27 +54,7 @@ void Service::onStop()
 	XDEBUG("===>>");
 }
 
-void Service::onSocketOpen(int fd)
-{
-	XDEBUG("===>>robotId=%d, fd=%d", robotId_, fd);
-	std::string buffer = "hello world123456789";
-	sendSocket(fd, buffer.data(), (int)buffer.size());
-}
 
-void Service::onSocketData(int fd, const char* data, size_t size)
-{
-	XDEBUG("%s[%d]fd=%d,size=%d, data=%s\n", serviceName_.data(), robotId_, fd, size, data);
-}
-
-void Service::onSocketClose(int fd, const char* info)
-{
-	XDEBUG("%s[%d]fd=%d,%s\n", serviceName_.data(), robotId_, fd, info);
-}
-
-void Service::onSocketError(int fd, const char* info)
-{
-	XDEBUG("%s[%d]fd=%d,%s\n", serviceName_.data(), robotId_, fd, info);
-}
 
 }
 

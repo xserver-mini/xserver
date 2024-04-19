@@ -109,7 +109,7 @@ void Service::onSocketOpen(int fd)
 void Service::onSocketData(int fd, const char* data, size_t size)
 {
 	XDEBUG("%s[%d]fd=%d, size=%d, data=%s\n", serviceName_.data(), robotId_, fd, size, data);
-	std::string buffer = "[from server]";
+	std::string buffer = "[from TCP Server]";
 	buffer.append(data, size);
 	sendSocket(fd, buffer.data(), (int)buffer.size());
 }

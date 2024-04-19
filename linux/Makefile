@@ -201,6 +201,102 @@ src/core/engine/enginecentor.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/engine/enginecentor.cpp.s
 .PHONY : src/core/engine/enginecentor.cpp.s
 
+src/core/http/httplib.o: src/core/http/httplib.cpp.o
+.PHONY : src/core/http/httplib.o
+
+# target to build an object file
+src/core/http/httplib.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/http/httplib.cpp.o
+.PHONY : src/core/http/httplib.cpp.o
+
+src/core/http/httplib.i: src/core/http/httplib.cpp.i
+.PHONY : src/core/http/httplib.i
+
+# target to preprocess a source file
+src/core/http/httplib.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/http/httplib.cpp.i
+.PHONY : src/core/http/httplib.cpp.i
+
+src/core/http/httplib.s: src/core/http/httplib.cpp.s
+.PHONY : src/core/http/httplib.s
+
+# target to generate assembly for a file
+src/core/http/httplib.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/http/httplib.cpp.s
+.PHONY : src/core/http/httplib.cpp.s
+
+src/core/http/openssl.o: src/core/http/openssl.cpp.o
+.PHONY : src/core/http/openssl.o
+
+# target to build an object file
+src/core/http/openssl.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/http/openssl.cpp.o
+.PHONY : src/core/http/openssl.cpp.o
+
+src/core/http/openssl.i: src/core/http/openssl.cpp.i
+.PHONY : src/core/http/openssl.i
+
+# target to preprocess a source file
+src/core/http/openssl.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/http/openssl.cpp.i
+.PHONY : src/core/http/openssl.cpp.i
+
+src/core/http/openssl.s: src/core/http/openssl.cpp.s
+.PHONY : src/core/http/openssl.s
+
+# target to generate assembly for a file
+src/core/http/openssl.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/http/openssl.cpp.s
+.PHONY : src/core/http/openssl.cpp.s
+
+src/core/http/serviceclient.o: src/core/http/serviceclient.cpp.o
+.PHONY : src/core/http/serviceclient.o
+
+# target to build an object file
+src/core/http/serviceclient.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.o
+.PHONY : src/core/http/serviceclient.cpp.o
+
+src/core/http/serviceclient.i: src/core/http/serviceclient.cpp.i
+.PHONY : src/core/http/serviceclient.i
+
+# target to preprocess a source file
+src/core/http/serviceclient.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.i
+.PHONY : src/core/http/serviceclient.cpp.i
+
+src/core/http/serviceclient.s: src/core/http/serviceclient.cpp.s
+.PHONY : src/core/http/serviceclient.s
+
+# target to generate assembly for a file
+src/core/http/serviceclient.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.s
+.PHONY : src/core/http/serviceclient.cpp.s
+
+src/core/http/serviceserver.o: src/core/http/serviceserver.cpp.o
+.PHONY : src/core/http/serviceserver.o
+
+# target to build an object file
+src/core/http/serviceserver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.o
+.PHONY : src/core/http/serviceserver.cpp.o
+
+src/core/http/serviceserver.i: src/core/http/serviceserver.cpp.i
+.PHONY : src/core/http/serviceserver.i
+
+# target to preprocess a source file
+src/core/http/serviceserver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.i
+.PHONY : src/core/http/serviceserver.cpp.i
+
+src/core/http/serviceserver.s: src/core/http/serviceserver.cpp.s
+.PHONY : src/core/http/serviceserver.s
+
+# target to generate assembly for a file
+src/core/http/serviceserver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.s
+.PHONY : src/core/http/serviceserver.cpp.s
+
 src/core/open/openbuffer.o: src/core/open/openbuffer.cpp.o
 .PHONY : src/core/open/openbuffer.o
 
@@ -224,6 +320,30 @@ src/core/open/openbuffer.s: src/core/open/openbuffer.cpp.s
 src/core/open/openbuffer.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/open/openbuffer.cpp.s
 .PHONY : src/core/open/openbuffer.cpp.s
+
+src/core/open/opencsv.o: src/core/open/opencsv.cpp.o
+.PHONY : src/core/open/opencsv.o
+
+# target to build an object file
+src/core/open/opencsv.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.o
+.PHONY : src/core/open/opencsv.cpp.o
+
+src/core/open/opencsv.i: src/core/open/opencsv.cpp.i
+.PHONY : src/core/open/opencsv.i
+
+# target to preprocess a source file
+src/core/open/opencsv.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.i
+.PHONY : src/core/open/opencsv.cpp.i
+
+src/core/open/opencsv.s: src/core/open/opencsv.cpp.s
+.PHONY : src/core/open/opencsv.s
+
+# target to generate assembly for a file
+src/core/open/opencsv.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.s
+.PHONY : src/core/open/opencsv.cpp.s
 
 src/core/open/openfile.o: src/core/open/openfile.cpp.o
 .PHONY : src/core/open/openfile.o
@@ -753,6 +873,54 @@ src/main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
+src/service/httpclient/service.o: src/service/httpclient/service.cpp.o
+.PHONY : src/service/httpclient/service.o
+
+# target to build an object file
+src/service/httpclient/service.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.o
+.PHONY : src/service/httpclient/service.cpp.o
+
+src/service/httpclient/service.i: src/service/httpclient/service.cpp.i
+.PHONY : src/service/httpclient/service.i
+
+# target to preprocess a source file
+src/service/httpclient/service.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.i
+.PHONY : src/service/httpclient/service.cpp.i
+
+src/service/httpclient/service.s: src/service/httpclient/service.cpp.s
+.PHONY : src/service/httpclient/service.s
+
+# target to generate assembly for a file
+src/service/httpclient/service.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.s
+.PHONY : src/service/httpclient/service.cpp.s
+
+src/service/httpserver/service.o: src/service/httpserver/service.cpp.o
+.PHONY : src/service/httpserver/service.o
+
+# target to build an object file
+src/service/httpserver/service.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.o
+.PHONY : src/service/httpserver/service.cpp.o
+
+src/service/httpserver/service.i: src/service/httpserver/service.cpp.i
+.PHONY : src/service/httpserver/service.i
+
+# target to preprocess a source file
+src/service/httpserver/service.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.i
+.PHONY : src/service/httpserver/service.cpp.i
+
+src/service/httpserver/service.s: src/service/httpserver/service.cpp.s
+.PHONY : src/service/httpserver/service.s
+
+# target to generate assembly for a file
+src/service/httpserver/service.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/XServer.dir/build.make CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.s
+.PHONY : src/service/httpserver/service.cpp.s
+
 src/service/tcpclient/service.o: src/service/tcpclient/service.cpp.o
 .PHONY : src/service/tcpclient/service.o
 
@@ -963,9 +1131,24 @@ help:
 	@echo "... src/core/engine/enginecentor.o"
 	@echo "... src/core/engine/enginecentor.i"
 	@echo "... src/core/engine/enginecentor.s"
+	@echo "... src/core/http/httplib.o"
+	@echo "... src/core/http/httplib.i"
+	@echo "... src/core/http/httplib.s"
+	@echo "... src/core/http/openssl.o"
+	@echo "... src/core/http/openssl.i"
+	@echo "... src/core/http/openssl.s"
+	@echo "... src/core/http/serviceclient.o"
+	@echo "... src/core/http/serviceclient.i"
+	@echo "... src/core/http/serviceclient.s"
+	@echo "... src/core/http/serviceserver.o"
+	@echo "... src/core/http/serviceserver.i"
+	@echo "... src/core/http/serviceserver.s"
 	@echo "... src/core/open/openbuffer.o"
 	@echo "... src/core/open/openbuffer.i"
 	@echo "... src/core/open/openbuffer.s"
+	@echo "... src/core/open/opencsv.o"
+	@echo "... src/core/open/opencsv.i"
+	@echo "... src/core/open/opencsv.s"
 	@echo "... src/core/open/openfile.o"
 	@echo "... src/core/open/openfile.i"
 	@echo "... src/core/open/openfile.s"
@@ -1032,6 +1215,12 @@ help:
 	@echo "... src/main.o"
 	@echo "... src/main.i"
 	@echo "... src/main.s"
+	@echo "... src/service/httpclient/service.o"
+	@echo "... src/service/httpclient/service.i"
+	@echo "... src/service/httpclient/service.s"
+	@echo "... src/service/httpserver/service.o"
+	@echo "... src/service/httpserver/service.i"
+	@echo "... src/service/httpserver/service.s"
 	@echo "... src/service/tcpclient/service.o"
 	@echo "... src/service/tcpclient/service.i"
 	@echo "... src/service/tcpclient/service.s"

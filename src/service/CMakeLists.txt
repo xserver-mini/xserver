@@ -4,6 +4,11 @@ set(FILE_HPP
 	test/service.h
 	test/handle.h
 
+	httpclient/service.h
+	httpserver/service.h
+	httpserver/handle.h
+	httpserver/http_util.h
+
 	tcpserver/service.h
 	tcpclient/service.h
 
@@ -22,6 +27,9 @@ set(FILE_HPP
 
 set(FILE_CPP
 	test/service.cpp
+
+	httpclient/service.cpp
+	httpserver/service.cpp
 
 	tcpserver/service.cpp
 	tcpclient/service.cpp

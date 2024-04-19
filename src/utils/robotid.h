@@ -6,14 +6,12 @@ enum ERobotID
 {
 	ERobotIDTest   = 100,
     ERobotIDTcpClient = 101,
+    ERobotIDHttpClient = 111,
 
     ERobotIDUdpPort = 201,
     ERobotIDUdpDevice = 202,
 
-    ERobotIDAVPlayer   = 301,
-    ERobotIDAVRecorder = 302,
-    ERobotIDAVCapturer = 303,
-    ERobotIDAVFiler    = 304
+
 };
 
 

@@ -1,12 +1,217 @@
 
-#include "openhttpslib.h"
-#include "../../openstring.h"
-#include "../../opensocket.h"
+#include "httplib.h"
+#include <unordered_map>
+#include "../open/opentime.h"
+//#include "../open/opensocket.h"
+#include "serviceserver.h"
 
-namespace open
+static void Split(const std::string& line, const std::string& split, std::vector<std::string>& vect_items)
 {
+    vect_items.clear();
+    std::string::size_type start_pos = 0;
+    std::string::size_type end_pos = line.find(split);
+    size_t size = 0;
+    while (end_pos != std::string::npos)
+    {
+        size = end_pos - start_pos;
+        if (size > 0)
+        {
+            vect_items.push_back(line.substr(start_pos, size));
+        }
+        else
+        {
+            vect_items.push_back("");
+        }
+        start_pos = end_pos + split.size();
+        end_pos = line.find(split, start_pos);
+    }
+    if (start_pos < line.size())
+    {
+        vect_items.push_back(line.substr(start_pos));
+    }
+}
 
-static std::map<int, std::string> httpStatusMsg;
+XHttpBuffer::XHttpBuffer(size_t capacity)
+    :size_(0),
+    offset_(0),
+    cap_(0),
+    buffer_(NULL),
+    miniCap_(capacity)
+{
+}
+
+XHttpBuffer::~XHttpBuffer()
+{
+    clear();
+    if (buffer_)
+    {
+        delete buffer_;
+        buffer_ = NULL;
+    }
+}
+
+unsigned char* XHttpBuffer::data()
+{
+    if (!buffer_)
+    {
+        assert(size_ == 0);
+        size_ = 0;
+        cap_ = miniCap_;
+        buffer_ = new unsigned char[cap_ + 2];
+        buffer_[0] = 0;
+        return buffer_;
+    }
+    if (offset_ + size_ <= cap_)
+    {
+        buffer_[offset_ + size_] = 0;
+    }
+    else
+    {
+        buffer_[cap_] = 0;
+        assert(false);
+    }
+    return buffer_ + offset_;
+}
+
+unsigned char* XHttpBuffer::clearResize(size_t size)
+{
+    if (cap_ >= size)
+    {
+        if (!buffer_)
+        {
+            buffer_ = new unsigned char[cap_ + 2];
+        }
+    }
+    else
+    {
+        if (buffer_)
+        {
+            delete buffer_;
+        }
+        cap_ = size;
+        buffer_ = new unsigned char[cap_ + 2];
+    }
+    offset_ = 0;
+    size_ = size;
+    buffer_[cap_] = 0;
+    return buffer_;
+}
+
+void XHttpBuffer::clear()
+{
+    size_ = 0;
+    offset_ = 0;
+    //cap_     = 0;
+}
+
+int64_t XHttpBuffer::popFront(void* data, size_t len)
+{
+    if (size_ < len)
+    {
+        return -1;
+    }
+    if (!buffer_)
+    {
+        assert(false);
+        return -1;
+    }
+    if (data)
+    {
+        memcpy(data, buffer_ + offset_, len);
+    }
+    offset_ += len;
+    size_ -= len;
+    return size_;
+}
+
+int64_t XHttpBuffer::popBack(void* data, size_t len)
+{
+    if (size_ < len)
+    {
+        return -1;
+    }
+    if (!buffer_)
+    {
+        assert(false);
+        return -1;
+    }
+    if (data)
+    {
+        memcpy(data, buffer_ + offset_ + size_ - len, len);
+    }
+    size_ -= len;
+    return size_;
+}
+
+int64_t XHttpBuffer::pushBack(const void* data, size_t len)
+{
+    if (len == 0)
+    {
+        return size_;
+    }
+    size_t newSize = size_ + len;
+    int64_t leftCap = cap_ - offset_;
+    size_t offset = 0;
+    if (leftCap < (int64_t)newSize)
+    {
+        if (buffer_ && newSize < cap_)
+        {
+            if (offset_ > 0)
+            {
+                for (size_t i = 0; i < size_; i++)
+                {
+                    buffer_[i] = buffer_[offset_ + i];
+                }
+                memset(buffer_ + size_, 0, cap_ + 1 - size_);
+            }
+            else
+            {
+                assert(false);
+            }
+            offset = size_;
+        }
+        else
+        {
+            unsigned char* origin = buffer_;
+            cap_ = miniCap_;
+            while (newSize > cap_)
+            {
+                cap_ *= 2;
+            }
+            buffer_ = new unsigned char[cap_ + 2];
+            if (!buffer_)
+            {
+                buffer_ = origin;
+                assert(false);
+                return -1;
+            }
+            memset(buffer_, 0, cap_ + 2);
+            if (origin)
+            {
+                if (size_ > 0)
+                {
+                    memcpy(buffer_, origin + offset_, size_);
+                }
+                delete origin;
+                offset = size_;
+            }
+        }
+        offset_ = 0;
+    }
+    else
+    {
+        offset = offset_ + size_;
+    }
+    if (data)
+    {
+        memcpy(buffer_ + offset, data, len);
+    }
+    size_ += len;
+    return size_;
+}
+
+
+static std::unordered_map<int, std::string> httpStatusMsg;
 
 static void init_http_status_msg(){
     httpStatusMsg[100] = "Continue";
@@ -65,38 +270,39 @@ static const std::string& GetHttpStatus(int code)
 }
 
 
-////////////OpenHttp//////////////////////
-OpenHttp::OpenHttp() 
-    :code_(-1), 
-    clen_(0), 
-    isReq_(false), 
-    port_(0), 
-    isHttps_(false), 
-    isChunked_(false), 
+////////////XHttp//////////////////////
+XHttp::XHttp()
+    :code_(-1),
+    clen_(0),
+    isReq_(false),
+    port_(0),
+    isHttps_(false),
+    isChunked_(false),
     isRemote_(false),
     isClient_(false),
-    isFinish_(false)
+    isFinish_(false),
+    client_(0)
 {
 }
-std::string& OpenHttp::header(const std::string& key)
+std::string& XHttp::header(const std::string& key)
 {
     std::string lowerKey;
     for (size_t i = 0; i < key.size(); ++i) lowerKey.push_back(key[i]);
     return headers_[lowerKey];
 }
-bool OpenHttp::hasHeader(const std::string& key)
+bool XHttp::hasHeader(const std::string& key)
 {
     std::string lowerKey;
     for (size_t i = 0; i < key.size(); ++i) lowerKey.push_back(key[i]);
     return headers_.find(lowerKey) != headers_.end();
 }
-void OpenHttp::removeHeader(const std::string& key)
+void XHttp::removeHeader(const std::string& key)
 {
     std::string lowerKey;
     for (size_t i = 0; i < key.size(); ++i) lowerKey.push_back(key[i]);
     headers_.erase(lowerKey);
 }
-void OpenHttp::parseUrl()
+void XHttp::parseUrl()
 {
     const std::string url = url_;
     if (url.empty()) return;
@@ -159,24 +365,24 @@ void OpenHttp::parseUrl()
     }
 }
 
-const std::string& OpenHttp::lookIp()
+const std::string& XHttp::lookIp()
 {
     if (ip_.empty())
     {
-        ip_ = OpenSocket::DomainNameToIp(domain_);
+        ip_ = open::OpenSocket::DomainToIp(domain_);
     }
     return ip_;
 }
 
-void OpenHttp::splitPaths()
+void XHttp::splitPaths()
 {
-    OpenString::Split(path_, "/", paths_);
+    Split(path_, "/", paths_);
     auto& paths = paths_;
     while (!paths.empty() && paths[0].empty()) paths.erase(paths.begin());
     while (!paths.empty() && paths.back().empty()) paths.pop_back();
 }
 
-void OpenHttp::encodeReqHeader()
+void XHttp::encodeReqHeader()
 {
     if (path_.empty()) path_ = "/";
     if (method_.empty()) method_ = "GET";
@@ -205,9 +411,9 @@ void OpenHttp::encodeReqHeader()
             for (; iter != params_.end(); iter++)
             {
                 if (body_.size() == 0)
-                    body_.pushBack(iter->first + "=" + iter->second);
+                    body_.append(iter->first + "=" + iter->second);
                 else
-                    body_.pushBack("&" + iter->first + "=" + iter->second);
+                    body_.append("&" + iter->first + "=" + iter->second);
             }
         }
     }
@@ -225,7 +431,7 @@ void OpenHttp::encodeReqHeader()
     head_.pushBack("\r\n");
 }
 
-void OpenHttp::encodeRespHeader()
+void XHttp::encodeRespHeader()
 {
     head_.clear();
     head_.pushBack("HTTP/1.1 " + std::to_string(code_) + " " + GetHttpStatus(code_) + "\r\n");
@@ -249,7 +455,7 @@ void OpenHttp::encodeRespHeader()
     head_.pushBack("\r\n");
 }
 
-void OpenHttp::decodeReqHeader()
+void XHttp::decodeReqHeader()
 {
     if (!headers_.empty() || head_.size() < 12) return;
     const char* head = (const char*)head_.data();
@@ -294,7 +500,7 @@ void OpenHttp::decodeReqHeader()
             //?x
             std::string param = tmp + 1;
             std::vector<std::string> vectItems;
-            OpenString::Split(param, "&", vectItems);
+            Split(param, "&", vectItems);
             std::string key;
             std::string value;
             for (size_t i = 0; i < vectItems.size(); i++)
@@ -378,7 +584,7 @@ void OpenHttp::decodeReqHeader()
     }
 }
 
-void OpenHttp::decodeRespHeader()
+void XHttp::decodeRespHeader()
 {
     if (!headers_.empty() || head_.size() < 12) return;
     const char* head = (const char*)head_.data();
@@ -447,7 +653,7 @@ void OpenHttp::decodeRespHeader()
     }
 }
 
-bool OpenHttp::requestData(const char* data, size_t size)
+bool XHttp::requestData(const char* data, size_t size)
 {
     assert(isReq_);
     if (code_ == -1)
@@ -487,7 +693,7 @@ bool OpenHttp::requestData(const char* data, size_t size)
             clen_ = -1;
         else if (buffer_.size() > 0)
         {
-            body_.pushBack(buffer_.data(), buffer_.size());
+            body_.append((const char*)buffer_.data(), buffer_.size());
             buffer_.clear();
         }
     }
@@ -496,7 +702,7 @@ bool OpenHttp::requestData(const char* data, size_t size)
         if (isChunked_)
             buffer_.pushBack(data, size);
         else
-            body_.pushBack(data, size);
+            body_.append(data, size);
     }
     if (isChunked_)
     {
@@ -545,7 +751,7 @@ bool OpenHttp::requestData(const char* data, size_t size)
             {
                 if (clen_ + 2 <= (int64_t)buffer_.size())
                 {
-                    body_.pushBack(buffer_.data(), clen_);
+                    body_.append((const char*)buffer_.data(), clen_);
                     buffer_.popFront(0, clen_);
                     const char* tmp = (const char*)buffer_.data();
                     if (tmp[0] == '\r' && tmp[1] == '\n')
@@ -570,7 +776,7 @@ bool OpenHttp::requestData(const char* data, size_t size)
     }
 
     //body_
-    unsigned char* tmp = body_.data();
+    auto tmp = body_.data();
     int len = (int)body_.size();
     if (clen_ > 0)
     {
@@ -605,7 +811,7 @@ bool OpenHttp::requestData(const char* data, size_t size)
     return false;
 }
 
-bool OpenHttp::responseData(const char* data, size_t size)
+bool XHttp::responseData(const char* data, size_t size)
 {
     //cacheFile_
     assert(!isReq_);
@@ -647,7 +853,7 @@ bool OpenHttp::responseData(const char* data, size_t size)
         else if (buffer_.size() > 0)
         {
             //printf("OpenHttp::responseData[[common]] len = %ld\n", clen_);
-            body_.pushBack(buffer_.data(), buffer_.size());
+            body_.append((const char*)buffer_.data(), buffer_.size());
             buffer_.clear();
         }
     }
@@ -656,7 +862,7 @@ bool OpenHttp::responseData(const char* data, size_t size)
         if (isChunked_)
             buffer_.pushBack(data, size);
         else
-            body_.pushBack(data, size);
+            body_.append(data, size);
     }
     if (isChunked_)
     {
@@ -705,7 +911,7 @@ bool OpenHttp::responseData(const char* data, size_t size)
             {
                 if (clen_ + 2 <= (int64_t)buffer_.size())
                 {
-                    body_.pushBack(buffer_.data(), clen_);
+                    body_.append((const char*)buffer_.data(), clen_);
                     buffer_.popFront(0, clen_);
                     const char* tmp = (const char*)buffer_.data();
                     if (tmp[0] == '\r' && tmp[1] == '\n')
@@ -730,8 +936,8 @@ bool OpenHttp::responseData(const char* data, size_t size)
     }
 
     //body_
-    unsigned char* tmp = body_.data();
-    size_t len = body_.size();
+    auto tmp = body_.data();
+    int len = (int)body_.size();
     //printf("OpenHttp::responseData[[body_]] clen_ = %ld, body len = %d\n", clen_, len);
     if (clen_ > 0)
     {
@@ -744,7 +950,7 @@ bool OpenHttp::responseData(const char* data, size_t size)
             return true;
         }
     }
-    else 
+    else
     {
         if (len > 2)
         {
@@ -759,46 +965,46 @@ bool OpenHttp::responseData(const char* data, size_t size)
 }
 
 
-////////////OpenHttpResponse//////////////////////
-void OpenHttpResponse::decodeReqHeader()
+////////////XHttpResponse//////////////////////
+void XHttpResponse::decodeReqHeader()
 {
-    OpenHttp::decodeReqHeader();
+    XHttp::decodeReqHeader();
 }
 
-void OpenHttpResponse::init()
+void XHttpResponse::init()
 {
     port_ = 80;
-    headers_["server"] = "OpenMiniServer/1.0";
+    headers_["server"] = "XServer/1.0";
     headers_["accept-ranges"] = "bytes";
 
-    OpenTime openTime;
+    open::OpenTime openTime;
     headers_["date"] = openTime.toGMT();
     //headers_["connection"] = "keep-alive";
     headers_["connection"] = "close";
 }
-void OpenHttpResponse::response(const char* ctype, const char* buffer, size_t len)
+void XHttpResponse::response(const char* ctype, const char* buffer, size_t len)
 {
     code_ = 200;
-    body_.pushBack(buffer, len);
+    body_.append(buffer, len);
     headers_["content-type"] = GetContentType(ctype);
 }
-void OpenHttpResponse::response(const char* ctype, const std::string& buffer)
+void XHttpResponse::response(const char* ctype, const std::string& buffer)
 {
     code_ = 200;
-    body_.pushBack(buffer);
+    body_.append(buffer);
     headers_["content-type"] = GetContentType(ctype);
 }
-void OpenHttpResponse::response(int code, const std::string& ctype, const std::string& buffer)
+void XHttpResponse::response(int code, const std::string& ctype, const std::string& buffer)
 {
     code_ = code;
-    body_.pushBack(buffer);
+    body_.append(buffer);
     headers_["content-type"] = GetContentType(ctype.data());
 }
-void OpenHttpResponse::response404Html()
+void XHttpResponse::response404Html()
 {
     response(".html", "<html><body><h1>404</h1><p>Sorry, We can't provide this service! By OpenLinyou</p></body></html>");
 }
-const std::string OpenHttpResponse::GetContentType(const char* fileExt)
+const std::string XHttpResponse::GetContentType(const char* fileExt)
 {
     auto iter = ContentTypes_.find(fileExt);
     if (iter != ContentTypes_.end())
@@ -808,22 +1014,24 @@ const std::string OpenHttpResponse::GetContentType(const char* fileExt)
     return fileExt;
 }
 
-void OpenHttpResponse::send()
+void XHttpResponse::send()
 {
-    auto proto = std::shared_ptr<OpenMsgProto>(new OpenMsgProto);
-    proto->srcPid_ = pid_;
-
-    //proto->srcName_ = "OpenSocket";
-    auto protoMsg = std::shared_ptr<OpenHttpSendResponseMsg>(new OpenHttpSendResponseMsg);
-    protoMsg->fd_ = fd_;
-    proto->msg_ = protoMsg;
-    if (!OpenServer::Send((int)pid_, proto))
-        printf("penHttpResponse::send faild pid = %d\n", (int)pid_);
+    if (isReq_)
+    {
+        XASSERT(false);
+        return;
+    }
+    if (!client_)
+    {
+        XASSERT(false);
+        return;
+    }
+    XServiceHttpServer::XClient* client = (XServiceHttpServer::XClient*)client_;
+    client->sendResponse();
 }
 
-////////////OpenHttpRequest//////////////////////
-
-const std::map<std::string, std::string> OpenHttpResponse::ContentTypes_ = {
+////////////XHttpRequest//////////////////////
+const std::map<std::string, std::string> XHttpResponse::ContentTypes_ = {
     {".html", "text/html;charset=utf-8"},
     {".css", "text/css;charset=utf-8"},
     {".plain", "text/plain;charset=utf-8"},
@@ -1155,6 +1363,4 @@ const std::map<std::string, std::string> OpenHttpResponse::ContentTypes_ = {
     {".ipa", "application/vnd.iphone"},
     {".apk", "application/vnd.android.package-archive"},
     {".xap", "application/x-silverlight-app"}
-};
-
 };

@@ -31,3 +31,8 @@
 *.out
 *.app
 /build
+/win32/.vs
+/win32/log
+/win32/x64
+/win32/Debug
+/win32/XServer.dir

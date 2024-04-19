@@ -128,7 +128,7 @@ bool XSocketCentor::onEventSocket(XEventSocket* event)
     return true;
 }
 
-int XSocketCentor::createServer(const std::string& listenName, const std::string& acceptName, int threadNum)
+int XSocketCentor::createServer(const std::string& listenName, const std::string& acceptName, int engineNum, int robotNum)
 {
     if (vectSevers_.size() >= EMaxServerNum)
     {
@@ -136,7 +136,7 @@ int XSocketCentor::createServer(const std::string& listenName, const std::string
         return -1;
     }
     int serverId = (int)vectSevers_.size() + 1;
-    auto server = new XSocketServer(serverId, listenName, acceptName, threadNum);
+    auto server = new XSocketServer(serverId, listenName, acceptName, engineNum, robotNum);
     vectSevers_.push_back(server);
     return serverId;
 }

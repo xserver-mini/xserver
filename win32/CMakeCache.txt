@@ -154,10 +154,10 @@ CMAKE_SHARED_LINKER_FLAGS_RELWITHDEBINFO:STRING=/debug /INCREMENTAL
 
 //If set, runtime paths are not added when installing shared libraries,
 // but are added when building.
-CMAKE_SKIP_INSTALL_RPATH:BOOL=NO
+CMAKE_SKIP_INSTALL_RPATH:BOOL=OFF
 
 //If set, runtime paths are not added when using shared libraries.
-CMAKE_SKIP_RPATH:BOOL=NO
+CMAKE_SKIP_RPATH:BOOL=OFF
 
 //Flags used by the linker during the creation of static libraries
 // during all build types.
@@ -183,7 +183,34 @@ CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO:STRING=
 // .SILENT directive, and all commands will be echoed to the console
 // during the make.  This is useful for debugging only. With Visual
 // Studio IDE projects all commands are done without /nologo.
-CMAKE_VERBOSE_MAKEFILE:BOOL=FALSE
+CMAKE_VERBOSE_MAKEFILE:BOOL=OFF
+
+//Path to a library.
+LIB_EAY_DEBUG:FILEPATH=LIB_EAY_DEBUG-NOTFOUND
+
+//Path to a library.
+LIB_EAY_LIBRARY_DEBUG:FILEPATH=LIB_EAY_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+LIB_EAY_RELEASE:FILEPATH=C:/Program Files/OpenSSL/lib/libcrypto.lib
+
+//Path to a file.
+OPENSSL_APPLINK_SOURCE:FILEPATH=C:/Program Files/OpenSSL/include/openssl/applink.c
+
+//Path to a file.
+OPENSSL_INCLUDE_DIR:PATH=C:/Program Files/OpenSSL/include
+
+//OpenSSL opiton
+OPENSSL_OPTION:BOOL=ON
+
+//Path to a library.
+SSL_EAY_DEBUG:FILEPATH=SSL_EAY_DEBUG-NOTFOUND
+
+//Path to a library.
+SSL_EAY_LIBRARY_DEBUG:FILEPATH=SSL_EAY_LIBRARY_DEBUG-NOTFOUND
+
+//Path to a library.
+SSL_EAY_RELEASE:FILEPATH=C:/Program Files/OpenSSL/lib/libssl.lib
 
 //Value Computed by CMake
 XServer_BINARY_DIR:STATIC=D:/git/xserver/win32
@@ -325,4 +352,12 @@ CMAKE_STATIC_LINKER_FLAGS_RELEASE-ADVANCED:INTERNAL=1
 CMAKE_STATIC_LINKER_FLAGS_RELWITHDEBINFO-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
+//Details about finding OpenSSL
+FIND_PACKAGE_MESSAGE_DETAILS_OpenSSL:INTERNAL=[C:/Program Files/OpenSSL/lib/libcrypto.lib][C:/Program Files/OpenSSL/include][c ][v3.2.0()]
+//ADVANCED property for variable: LIB_EAY_LIBRARY_DEBUG
+LIB_EAY_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: OPENSSL_INCLUDE_DIR
+OPENSSL_INCLUDE_DIR-ADVANCED:INTERNAL=1
+//ADVANCED property for variable: SSL_EAY_LIBRARY_DEBUG
+SSL_EAY_LIBRARY_DEBUG-ADVANCED:INTERNAL=1
 

@@ -13,16 +13,17 @@
 #include "../robot/robotcentor.h"
 
 //XSocketServer
-XSocketServer::XSocketServer(int serverId, const std::string& listenName, const std::string& acceptName, int threadNum)
+XSocketServer::XSocketServer(int serverId, const std::string& listenName, const std::string& acceptName, int engineNum, int robotNum)
     :serverId_(serverId),
     listenName_(listenName),
     acceptName_(acceptName),
     listenRobot_(nullptr),
-    threadNum_(threadNum <= 0 ? 1 : threadNum),
+    engineNum_(engineNum <= 0 ? 1 : engineNum),
+    robotNum_(robotNum <= 0 ? 1 : robotNum),
     minRobotId_(serverId * XSocketCentor::EMinSocketRobotId),
     maxRobotId_(serverId * XSocketCentor::EMinSocketRobotId + 0x10000)
 {
-    XASSERT(serverId < XSocketCentor::EMaxServerNum);
+    XASSERT(serverId_ < XSocketCentor::EMaxServerNum);
     acceptRobots_.fill(0);
 }
 
@@ -38,7 +39,7 @@ void XSocketServer::start()
         return;
     }
     XEngine* engine = nullptr;
-    for (size_t i = 0; i < threadNum_; i++)
+    for (int i = 0; i < engineNum_; i++)
     {
         engine = XEngineCentor::GetInstance().createEngine();
         if (!engine)
@@ -50,17 +51,30 @@ void XSocketServer::start()
     }
     if (vectEngine_.empty())
     {
-        assert(false);
+        XASSERT(false);
         return;
     }
-    int robotId = 0;
+
     XRobot* robot = nullptr;
     auto& robotCentor = XRobotCentor::GetInstance();
+    int robotId = 0;
+    for (int i = 0; i < robotNum_; i++)
+    {
+        engine = vectEngine_[i % vectEngine_.size()];
+        robotId = i + serverId_ * XSocketCentor::EMinSocketRobotId;
+        robot = robotCentor.createRobot<XRobot>(engine, robotId, acceptName_);
+        if (!robot)
+        {
+            XASSERT(false);
+            continue;
+        }
+        robot->server_ = this;
+        vectRobot_.push_back(robot);
+    }
+
     for (int i = 0; i < acceptRobots_.size(); i++)
     {
-        robotId = minRobotId_ + i;
-        engine  = vectEngine_[i % vectEngine_.size()];
-        robot = robotCentor.createRobot<XRobot>(engine, robotId, acceptName_);
+        robot = vectRobot_[i % vectRobot_.size()];
         if (!robot)
         {
             assert(false);
@@ -69,6 +83,7 @@ void XSocketServer::start()
         robot->server_ = this;
         acceptRobots_[i] = robot;
     }
+
     engine = XEngineCentor::GetInstance().createEngine();
     if (!engine)
     {

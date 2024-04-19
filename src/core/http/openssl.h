@@ -1,12 +1,9 @@
 
-#ifndef HEADER_OPEN_SSL_H
-#define HEADER_OPEN_SSL_H
+#pragma once
 
 #include <string.h>
 #include <string>
 
-
-//#define OPENSSL_EXTERNAL_INITIALIZATION
 
 # ifdef  __cplusplus
 extern "C" {
@@ -23,10 +20,8 @@ typedef struct ssl_ctx_st SSL_CTX;
 }
 #endif
 
-namespace open
-{
 
-struct TlsBuffer
+struct XTlsBuffer
 {
     size_t size_;
     size_t offset_;
@@ -34,8 +29,8 @@ struct TlsBuffer
     size_t miniCap_;
     unsigned char* buffer_;
 public:
-    TlsBuffer(size_t capacity = 256);
-    ~TlsBuffer();
+	XTlsBuffer(size_t capacity = 256);
+    ~XTlsBuffer();
 
     inline size_t cap() { return cap_; }
     inline size_t size() { return size_; }
@@ -149,44 +144,42 @@ public:
 	}
 };
 
-struct SslCtx
+struct XSslCtx
 {
     SSL_CTX* ctx_;
-    SslCtx(bool is_server);
-    ~SslCtx();
+	XSslCtx(bool is_server);
+    ~XSslCtx();
     int setCert(const char* certfile, const char* key);
     int setCiphers(const char* s);
 };
 
-struct TlsContext
+struct XTlsContext
 {
     SSL* ssl_;
-    SslCtx* ctx_;
+    XSslCtx* ctx_;
     BIO* in_bio_;
     BIO* out_bio_;
     bool is_server_;
     bool is_close_;
 
-    TlsContext(SslCtx* ctx, bool is_server, const char* hostname = 0);
-    ~TlsContext();
+	XTlsContext(XSslCtx* ctx, bool is_server, const char* hostname = 0);
+    ~XTlsContext();
     void init_bio();
     bool isFinished();
 
     void close();
-    int bioRead(TlsBuffer* buffer);
+    int bioRead(XTlsBuffer* buffer);
     void bioWrite(const char* s, size_t len);
-    int handshake(const char* exchange, size_t slen, TlsBuffer* buffer);
-    int read(const char* encrypted_data, size_t slen, TlsBuffer* buffer);
-    int write(char* unencrypted_data, size_t slen, TlsBuffer* buffer);
+    int handshake(const char* exchange, size_t slen, XTlsBuffer* buffer);
+    int read(const char* encrypted_data, size_t slen, XTlsBuffer* buffer);
+    int write(char* unencrypted_data, size_t slen, XTlsBuffer* buffer);
 };
 
-struct Ltls
+struct XLtls
 {
-    Ltls();
-    ~Ltls();
-    static Ltls Instance_;
+	XLtls();
+    ~XLtls();
+    static XLtls Instance_;
 };
 
-};
 
-#endif //HEADER_OPEN_SSL_H

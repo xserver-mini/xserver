@@ -20,6 +20,7 @@ public:
 	virtual void onSocketData(int fd, const char* data, size_t size);
 	virtual void onSocketClose(int fd, const char* info);
 	virtual void onSocketError(int fd, const char* info);
+	virtual void onSocketWarning(int fd, const char* info);
 protected:
 };
 

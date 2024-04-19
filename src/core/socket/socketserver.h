@@ -15,7 +15,7 @@ class XEventSocket;
 class XSocketServer
 {
 public:
-	XSocketServer(int serverId, const std::string& listenName, const std::string& acceptName, int threadNum);
+	XSocketServer(int serverId, const std::string& listenName, const std::string& acceptName, int engineNum, int robotNum);
 	virtual ~XSocketServer();
 
 	void start();
@@ -26,11 +26,13 @@ public:
 	const int serverId_;
 	const int minRobotId_;
 	const int maxRobotId_;
-	const int threadNum_;
+	const int engineNum_;
+	const int robotNum_;
 protected:
 	std::string listenName_;
 	std::string acceptName_;
 	XRobot* listenRobot_;
 	std::vector<XEngine*> vectEngine_;
+	std::vector<XRobot*> vectRobot_;
 	std::array<XRobot*, 0x10000> acceptRobots_;
 };

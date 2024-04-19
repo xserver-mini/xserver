@@ -14,8 +14,6 @@
 
 #endif
 
-namespace open
-{
 
 static bool TLS_IS_INIT = false;
 static void print_error(const char* fmt, ...)
@@ -26,8 +24,8 @@ static void print_error(const char* fmt, ...)
     va_end(argp);
 }
 
-////////////TlsBuffer//////////////////////
-TlsBuffer::TlsBuffer(size_t capacity)
+////////////XTlsBuffer//////////////////////
+XTlsBuffer::XTlsBuffer(size_t capacity)
     :size_(0),
     offset_(0),
     cap_(0),
@@ -35,9 +33,12 @@ TlsBuffer::TlsBuffer(size_t capacity)
     buffer_(NULL)
 {}
 
-TlsBuffer::~TlsBuffer(){ clear(); }
+XTlsBuffer::~XTlsBuffer()
+{ 
+    clear(); 
+}
 
-unsigned char* TlsBuffer::data()
+unsigned char* XTlsBuffer::data()
 {
     if (!buffer_)
     {
@@ -60,7 +61,7 @@ unsigned char* TlsBuffer::data()
     return buffer_ + offset_;
 }
 
-void TlsBuffer::clear()
+void XTlsBuffer::clear()
 {
     size_ = 0;
     offset_ = 0;
@@ -72,7 +73,7 @@ void TlsBuffer::clear()
     }
 }
 
-int64_t TlsBuffer::pop(void* data, size_t len)
+int64_t XTlsBuffer::pop(void* data, size_t len)
 {
     if (data == NULL || len <= 0)
     {
@@ -94,7 +95,7 @@ int64_t TlsBuffer::pop(void* data, size_t len)
     return size_;
 }
 
-int64_t TlsBuffer::push(const void* data, size_t len)
+int64_t XTlsBuffer::push(const void* data, size_t len)
 {
     size_t newSize = size_ + len;
     int64_t leftCap = cap_ - offset_;
@@ -142,8 +143,8 @@ int64_t TlsBuffer::push(const void* data, size_t len)
 }
 
 
-////////////SslCtx//////////////////////
-SslCtx::SslCtx(bool is_server)
+////////////XSslCtx//////////////////////
+XSslCtx::XSslCtx(bool is_server)
 {
 #ifdef USE_OPEN_SSL
 
@@ -164,7 +165,8 @@ SslCtx::SslCtx(bool is_server)
     }
 #endif
 }
-SslCtx::~SslCtx()
+
+XSslCtx::~XSslCtx()
 {
 #ifdef USE_OPEN_SSL
     if (ctx_)
@@ -174,7 +176,8 @@ SslCtx::~SslCtx()
     }
 #endif
 }
-int SslCtx::setCert(const char* certfile, const char* key)
+
+int XSslCtx::setCert(const char* certfile, const char* key)
 {
 #ifdef USE_OPEN_SSL
     if (!certfile)
@@ -213,7 +216,7 @@ int SslCtx::setCert(const char* certfile, const char* key)
 #endif
     return 0;
 }
-int SslCtx::setCiphers(const char* s)
+int XSslCtx::setCiphers(const char* s)
 {
 #ifdef USE_OPEN_SSL
     if (!s)
@@ -231,8 +234,8 @@ int SslCtx::setCiphers(const char* s)
     return 0;
 }
 
-////////////TlsContext//////////////////////
-TlsContext::TlsContext(SslCtx* ctx, bool is_server, const char* hostname)
+////////////XTlsContext//////////////////////
+XTlsContext::XTlsContext(XSslCtx* ctx, bool is_server, const char* hostname)
     :ctx_(ctx),
     ssl_(0),
     in_bio_(0),
@@ -256,11 +259,13 @@ TlsContext::TlsContext(SslCtx* ctx, bool is_server, const char* hostname)
     assert(false);
 #endif
 }
-TlsContext::~TlsContext()
+
+XTlsContext::~XTlsContext()
 {
     close();
 }
-void TlsContext::init_bio()
+
+void XTlsContext::init_bio()
 {
 #ifdef USE_OPEN_SSL
     ssl_ = SSL_new(ctx_->ctx_);
@@ -290,7 +295,8 @@ void TlsContext::init_bio()
     SSL_set_bio(ssl_, in_bio_, out_bio_);
 #endif
 }
-bool TlsContext::isFinished()
+
+bool XTlsContext::isFinished()
 {
 #ifdef USE_OPEN_SSL
     bool b = SSL_is_init_finished(ssl_);
@@ -300,7 +306,7 @@ bool TlsContext::isFinished()
 #endif
 }
 
-void TlsContext::close()
+void XTlsContext::close()
 {
 #ifdef USE_OPEN_SSL
     if (!is_close_)
@@ -313,7 +319,8 @@ void TlsContext::close()
     }
 #endif
 }
-int TlsContext::bioRead(TlsBuffer* buffer)
+
+int XTlsContext::bioRead(XTlsBuffer* buffer)
 {
     int all_read = 0;
 #ifdef USE_OPEN_SSL
@@ -349,7 +356,8 @@ int TlsContext::bioRead(TlsBuffer* buffer)
 #endif
     return all_read;
 }
-void TlsContext::bioWrite(const char* s, size_t len)
+
+void XTlsContext::bioWrite(const char* s, size_t len)
 {
 #ifdef USE_OPEN_SSL
     char* p = (char*)s;
@@ -379,7 +387,8 @@ void TlsContext::bioWrite(const char* s, size_t len)
     }
 #endif
 }
-int TlsContext::handshake(const char* exchange, size_t slen, TlsBuffer* buffer)
+
+int XTlsContext::handshake(const char* exchange, size_t slen, XTlsBuffer* buffer)
 {
     // check handshake is finished
     //if (SSL_is_init_finished(ssl_))
@@ -458,7 +467,8 @@ int TlsContext::handshake(const char* exchange, size_t slen, TlsBuffer* buffer)
 #endif
     return -1;
 }
-int TlsContext::read(const char* encrypted_data, size_t slen, TlsBuffer* buffer)
+
+int XTlsContext::read(const char* encrypted_data, size_t slen, XTlsBuffer* buffer)
 {
 #ifdef USE_OPEN_SSL
     // write encrypted data
@@ -493,7 +503,8 @@ int TlsContext::read(const char* encrypted_data, size_t slen, TlsBuffer* buffer)
 #endif
     return 1;
 }
-int TlsContext::write(char* unencrypted_data, size_t slen, TlsBuffer* buffer)
+
+int XTlsContext::write(char* unencrypted_data, size_t slen, XTlsBuffer* buffer)
 {
 #ifdef USE_OPEN_SSL
     int written = 0;
@@ -525,8 +536,8 @@ int TlsContext::write(char* unencrypted_data, size_t slen, TlsBuffer* buffer)
 #endif
 }
 
-////////////Ltls//////////////////////
-Ltls::Ltls()
+////////////XLtls//////////////////////
+XLtls::XLtls()
 {
 #ifdef USE_OPEN_SSL
 #ifndef OPENSSL_EXTERNAL_INITIALIZATION
@@ -541,7 +552,8 @@ Ltls::Ltls()
 #endif
     TLS_IS_INIT = true;
 }
-Ltls::~Ltls()
+
+XLtls::~XLtls()
 {
 #ifdef USE_OPEN_SSL
 #ifndef OPENSSL_EXTERNAL_INITIALIZATION
@@ -558,6 +570,5 @@ Ltls::~Ltls()
 #endif
     TLS_IS_INIT = false;
 }
-Ltls Ltls::Instance_;
 
-};
+XLtls XLtls::Instance_;

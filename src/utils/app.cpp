@@ -1,15 +1,18 @@
 #include "app.h"
 #include "core/robot/robotcentor.h"
 #include "core/engine/enginecentor.h"
+
 #include "utils/event.h"
 
 #include "core/service/servicecentor.h"
 #include "core/socket/socketcentor.h"
-#include "core/timer/servicetimer.h"
 
 #include "service/test/service.h"
 #include "service/tcpserver/service.h"
 #include "service/tcpclient/service.h"
+
+#include "service/httpclient/service.h"
+#include "service/httpserver/service.h"
 
 XApp* XApp::CreateApp()
 {
@@ -36,18 +39,24 @@ void App::start()
 	//name bind Service
 	serviceCentor.registerService<Test::Service>("Test");
 
+	serviceCentor.registerService<TcpClient::Service>("TcpClient");
 	serviceCentor.registerService<TcpListen::Service>("TcpListen");
 	serviceCentor.registerService<TcpAccept::Service>("TcpAccept");
-	serviceCentor.registerService<TcpClient::Service>("TcpClient");
+
+	serviceCentor.registerService<HttpClient::Service>("HttpClient");
+	serviceCentor.registerService<HttpListen::Service>("HttpListen");
+	serviceCentor.registerService<HttpAccept::Service>("HttpAccept");
 
 	//start robot;
 	auto& robotCentor = XRobotCentor::GetInstance();
 	robotCentor.createSingleRobot<XRobot>(ERobotIDTest, "Test");
 	robotCentor.createSingleRobot<XRobot>(ERobotIDTcpClient, "TcpClient");
 
+	robotCentor.createSingleRobot<XRobot>(ERobotIDHttpClient, "HttpClient");
 
 	auto& socketCentor = XSocketCentor::GetInstance();
-	socketCentor.createServer("TcpListen", "TcpAccept", 2);
+	socketCentor.createServer("TcpListen", "TcpAccept", 2, 8);
+	socketCentor.createServer("HttpListen", "HttpAccept", 2, 8);
 	socketCentor.start();
 }
 

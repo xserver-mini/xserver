@@ -22,12 +22,18 @@ set(FILE_HPP
 	open/openbuffer.h
 	open/openjson.h
 	open/openfile.h
+	open/opencsv.h
 
 	utils/common.h
 	utils/spinlock.h
 	utils/logger.h
 	utils/config.h
 	utils/cache.h
+
+	http/openssl.h
+	http/httplib.h
+	http/serviceclient.h
+	http/serviceserver.h
 
 	platform/net.h
 
@@ -57,10 +63,16 @@ set(FILE_CPP
 	open/openbuffer.cpp
 	open/openjson.cpp
 	open/openfile.cpp
+	open/opencsv.cpp
 
 	utils/logger.cpp
 	utils/config.cpp
 	utils/cache.cpp
+
+	http/openssl.cpp
+	http/httplib.cpp
+	http/serviceclient.cpp
+	http/serviceserver.cpp
 
 	platform/net.cpp
 

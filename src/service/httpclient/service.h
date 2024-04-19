@@ -1,11 +1,11 @@
 #pragma once
 
-#include "core/socket/servicesocket.h"
+#include "core/http/serviceclient.h"
 
-namespace TcpClient
+namespace HttpClient
 {
 
-class Service : public XServiceSocket
+class Service : public XServiceHttpClient
 {
 public:
 	Service(XRobot* robot);
@@ -16,10 +16,6 @@ public:
 	virtual void onStart();
 	virtual void onStop();
 
-	virtual void onSocketOpen(int fd);
-	virtual void onSocketData(int fd, const char* data, size_t size);
-	virtual void onSocketClose(int fd, const char* info);
-	virtual void onSocketError(int fd, const char* info);
 protected:
 };
 

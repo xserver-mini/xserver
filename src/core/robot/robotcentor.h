@@ -25,7 +25,7 @@ public:
     bool sendEventInter(XEvent* event);
 
     template <class T>
-    XRobot* createRobot(int robotId, const std::string& serviceName, bool isLog = true)
+    XRobot* createRobot(int robotId, const std::string& serviceName, bool isLog = false)
     {
         XEngineCentor::GetInstance().checkThread();
         if (isLockCreate_)
@@ -52,7 +52,7 @@ public:
 
 
     template <class T>
-    XRobot* createRobot(XEngine* engine, int robotId, const std::string& serviceName, bool isLog = true)
+    XRobot* createRobot(XEngine* engine, int robotId, const std::string& serviceName, bool isLog = false)
     {
         if (!engine)
         {
@@ -68,7 +68,7 @@ public:
     }
 
     template <class T>
-    XRobot* createSingleRobot(int robotId, const std::string& serviceName, bool isLog = true)
+    XRobot* createSingleRobot(int robotId, const std::string& serviceName, bool isLog = false)
     {
         auto robot = createRobot<T>(robotId, serviceName, isLog);
         if (robot)

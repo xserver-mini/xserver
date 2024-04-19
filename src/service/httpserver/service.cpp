@@ -1,9 +1,7 @@
 #include "service.h"
-#include <cassert>
-#include <iostream>
 #include "utils/event.h"
 
-namespace TcpListen
+namespace HttpListen
 {
 
 Service::Service(XRobot* robot)
@@ -28,8 +26,8 @@ void Service::onInit()
 
 void Service::onStart()
 {
-	XDEBUG("===>>");
-	focusFd_ = listenSocket("127.0.0.1", 51888);
+	focusFd_ = listenSocket("127.0.0.1", 8080);
+	XDEBUG("===>>127.0.0.1:8080");
 }
 
 void Service::onStop()
@@ -60,14 +58,13 @@ void Service::onSocketError(int fd, const char* info)
 
 }
 
-namespace TcpAccept
+namespace HttpAccept
 {
 
 Service::Service(XRobot* robot)
-	:XServiceSocket(robot)
+	:XServiceHttpServer(robot)
 {
 	assert(robot);
-	//BIND_EVENT(EventTimerEvent);
 }
 
 Service::~Service()
@@ -81,47 +78,22 @@ Service* Service::New(XRobot* robot)
 
 void Service::onInit()
 {
-	//std::cout << "TcpAccept::Service::onInit ===>>" << std::endl;
+#ifdef USE_OPEN_SSL
+	//openSSL("www.xx.com.key", "www.xx.com.crt");
+#endif
 }
 
 void Service::onStart()
 {
-	//std::cout << "TcpAccept::Service::onStart ===>>" << std::endl;
 }
 
 void Service::onStop()
 {
-	//std::cout << "TcpAccept::Service::onStop ===<<" << std::endl;
 }
 
-void Service::onSocketAccept(int fd, int afd, const std::string& ip, int port)
+bool Service::onHttp(XHttpRequest& req, XHttpResponse& rep)
 {
-	XASSERT(fd == afd);
-	XDEBUG("%s[%d]fd=%d, afd=%d, %s:%d\n", serviceName_.data(), robotId_, fd, afd, ip.data(), port);
-	startSocket(fd);
-}
-
-void Service::onSocketOpen(int fd)
-{
-	XDEBUG("===>>robotId=%d, fd=%d", robotId_, fd);
-}
-
-void Service::onSocketData(int fd, const char* data, size_t size)
-{
-	XDEBUG("%s[%d]fd=%d, size=%d, data=%s\n", serviceName_.data(), robotId_, fd, size, data);
-	std::string buffer = "[from server]";
-	buffer.append(data, size);
-	sendSocket(fd, buffer.data(), (int)buffer.size());
-}
-
-void Service::onSocketClose(int fd, const char* info)
-{
-	XDEBUG("%s[%d]fd=%d,%s\n", serviceName_.data(), robotId_, fd, info);
-}
-
-void Service::onSocketError(int fd, const char* info)
-{
-	XDEBUG("%s[%d]fd=%d,%s\n", serviceName_.data(), robotId_, fd, info);
+	return handle_.onCallBack(req, rep);;
 }
 
 }

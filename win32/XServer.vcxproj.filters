@@ -61,6 +61,9 @@
     <ClCompile Include="D:\git\xserver\src\core\open\openfile.cpp">
       <Filter>core\open</Filter>
     </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\open\opencsv.cpp">
+      <Filter>core\open</Filter>
+    </ClCompile>
     <ClCompile Include="D:\git\xserver\src\core\utils\logger.cpp">
       <Filter>core\utils</Filter>
     </ClCompile>
@@ -69,6 +72,18 @@
     </ClCompile>
     <ClCompile Include="D:\git\xserver\src\core\utils\cache.cpp">
       <Filter>core\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\http\openssl.cpp">
+      <Filter>core\http</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\http\httplib.cpp">
+      <Filter>core\http</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\http\serviceclient.cpp">
+      <Filter>core\http</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\http\serviceserver.cpp">
+      <Filter>core\http</Filter>
     </ClCompile>
     <ClCompile Include="D:\git\xserver\src\core\platform\net.cpp">
       <Filter>core\platform</Filter>
@@ -87,6 +102,12 @@
     </ClCompile>
     <ClCompile Include="D:\git\xserver\src\service\test\service.cpp">
       <Filter>service\test</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\service\httpclient\service.cpp">
+      <Filter>service\httpclient</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\service\httpserver\service.cpp">
+      <Filter>service\httpserver</Filter>
     </ClCompile>
     <ClCompile Include="D:\git\xserver\src\service\tcpserver\service.cpp">
       <Filter>service\tcpserver</Filter>
@@ -168,6 +189,9 @@
     <ClInclude Include="D:\git\xserver\src\core\open\openfile.h">
       <Filter>core\open</Filter>
     </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\open\opencsv.h">
+      <Filter>core\open</Filter>
+    </ClInclude>
     <ClInclude Include="D:\git\xserver\src\core\utils\common.h">
       <Filter>core\utils</Filter>
     </ClInclude>
@@ -180,11 +204,20 @@
     <ClInclude Include="D:\git\xserver\src\core\utils\config.h">
       <Filter>core\utils</Filter>
     </ClInclude>
-    <ClInclude Include="D:\git\xserver\src\core\utils\tool.h">
-      <Filter>core\utils</Filter>
-    </ClInclude>
     <ClInclude Include="D:\git\xserver\src\core\utils\cache.h">
       <Filter>core\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\http\openssl.h">
+      <Filter>core\http</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\http\httplib.h">
+      <Filter>core\http</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\http\serviceclient.h">
+      <Filter>core\http</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\http\serviceserver.h">
+      <Filter>core\http</Filter>
     </ClInclude>
     <ClInclude Include="D:\git\xserver\src\core\platform\net.h">
       <Filter>core\platform</Filter>
@@ -203,6 +236,18 @@
     </ClInclude>
     <ClInclude Include="D:\git\xserver\src\service\test\handle.h">
       <Filter>service\test</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\httpclient\service.h">
+      <Filter>service\httpclient</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\httpserver\service.h">
+      <Filter>service\httpserver</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\httpserver\handle.h">
+      <Filter>service\httpserver</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\httpserver\http_util.h">
+      <Filter>service\httpserver</Filter>
     </ClInclude>
     <ClInclude Include="D:\git\xserver\src\service\tcpserver\service.h">
       <Filter>service\tcpserver</Filter>
@@ -269,6 +314,9 @@
     <Filter Include="core\engine">
       <UniqueIdentifier>{9BB93346-503A-35CD-988F-3DAB2D300D18}</UniqueIdentifier>
     </Filter>
+    <Filter Include="core\http">
+      <UniqueIdentifier>{3E5AA8BB-12A5-3D9E-803A-7B4D2E5416E4}</UniqueIdentifier>
+    </Filter>
     <Filter Include="core\open">
       <UniqueIdentifier>{DCE8AE69-2512-3916-A3A4-DA10BB312605}</UniqueIdentifier>
     </Filter>
@@ -292,6 +340,12 @@
     </Filter>
     <Filter Include="service">
       <UniqueIdentifier>{87E1A458-8C5E-3ADE-AD06-19A5AD6845E1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service\httpclient">
+      <UniqueIdentifier>{473CCE48-B9C9-3FA0-B638-9E455CFA4825}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service\httpserver">
+      <UniqueIdentifier>{A2593A62-ED54-3A07-9749-D7E976F1E2B0}</UniqueIdentifier>
     </Filter>
     <Filter Include="service\tcpclient">
       <UniqueIdentifier>{CA045188-99E3-3164-AD31-054564B38ED5}</UniqueIdentifier>

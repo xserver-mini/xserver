@@ -41,7 +41,7 @@ void Service::onStop()
 void Service::onSocketOpen(int fd)
 {
 	XDEBUG("===>>robotId=%d, fd=%d", robotId_, fd);
-	std::string buffer = "hello world123456789";
+	std::string buffer = "hello world [from TCP Client]";
 	sendSocket(fd, buffer.data(), (int)buffer.size());
 }
 
@@ -56,6 +56,11 @@ void Service::onSocketClose(int fd, const char* info)
 }
 
 void Service::onSocketError(int fd, const char* info)
+{
+	XDEBUG("%s[%d]fd=%d,%s\n", serviceName_.data(), robotId_, fd, info);
+}
+
+void Service::onSocketWarning(int fd, const char* info)
 {
 	XDEBUG("%s[%d]fd=%d,%s\n", serviceName_.data(), robotId_, fd, info);
 }

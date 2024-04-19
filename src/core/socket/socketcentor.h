@@ -33,7 +33,7 @@ public:
     void start();
 	bool isHereRobot(int robotId);
 	bool onEventSocket(XEventSocket* event);
-	int createServer(const std::string& listenName, const std::string& acceptName, int threadNum);
+	int createServer(const std::string& listenName, const std::string& acceptName, int engineNum, int robotNum);
 protected:
     volatile bool isLockCreate_;
 	std::vector<XSocketServer*> vectSevers_;

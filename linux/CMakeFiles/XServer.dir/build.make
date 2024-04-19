@@ -349,10 +349,24 @@ CMakeFiles/XServer.dir/src/core/open/openfile.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/XServer.dir/src/core/open/openfile.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/git/xserver/src/core/open/openfile.cpp -o CMakeFiles/XServer.dir/src/core/open/openfile.cpp.s
 
+CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.o: CMakeFiles/XServer.dir/flags.make
+CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.o: ../src/core/open/opencsv.cpp
+CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.o -MF CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.o.d -o CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.o -c /mnt/d/git/xserver/src/core/open/opencsv.cpp
+
+CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/d/git/xserver/src/core/open/opencsv.cpp > CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.i
+
+CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/git/xserver/src/core/open/opencsv.cpp -o CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.s
+
 CMakeFiles/XServer.dir/src/core/utils/logger.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/core/utils/logger.cpp.o: ../src/core/utils/logger.cpp
 CMakeFiles/XServer.dir/src/core/utils/logger.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Building CXX object CMakeFiles/XServer.dir/src/core/utils/logger.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/XServer.dir/src/core/utils/logger.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/core/utils/logger.cpp.o -MF CMakeFiles/XServer.dir/src/core/utils/logger.cpp.o.d -o CMakeFiles/XServer.dir/src/core/utils/logger.cpp.o -c /mnt/d/git/xserver/src/core/utils/logger.cpp
 
 CMakeFiles/XServer.dir/src/core/utils/logger.cpp.i: cmake_force
@@ -366,7 +380,7 @@ CMakeFiles/XServer.dir/src/core/utils/logger.cpp.s: cmake_force
 CMakeFiles/XServer.dir/src/core/utils/config.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/core/utils/config.cpp.o: ../src/core/utils/config.cpp
 CMakeFiles/XServer.dir/src/core/utils/config.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_22) "Building CXX object CMakeFiles/XServer.dir/src/core/utils/config.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/XServer.dir/src/core/utils/config.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/core/utils/config.cpp.o -MF CMakeFiles/XServer.dir/src/core/utils/config.cpp.o.d -o CMakeFiles/XServer.dir/src/core/utils/config.cpp.o -c /mnt/d/git/xserver/src/core/utils/config.cpp
 
 CMakeFiles/XServer.dir/src/core/utils/config.cpp.i: cmake_force
@@ -380,7 +394,7 @@ CMakeFiles/XServer.dir/src/core/utils/config.cpp.s: cmake_force
 CMakeFiles/XServer.dir/src/core/utils/cache.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/core/utils/cache.cpp.o: ../src/core/utils/cache.cpp
 CMakeFiles/XServer.dir/src/core/utils/cache.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_23) "Building CXX object CMakeFiles/XServer.dir/src/core/utils/cache.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/XServer.dir/src/core/utils/cache.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/core/utils/cache.cpp.o -MF CMakeFiles/XServer.dir/src/core/utils/cache.cpp.o.d -o CMakeFiles/XServer.dir/src/core/utils/cache.cpp.o -c /mnt/d/git/xserver/src/core/utils/cache.cpp
 
 CMakeFiles/XServer.dir/src/core/utils/cache.cpp.i: cmake_force
@@ -391,10 +405,66 @@ CMakeFiles/XServer.dir/src/core/utils/cache.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/XServer.dir/src/core/utils/cache.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/git/xserver/src/core/utils/cache.cpp -o CMakeFiles/XServer.dir/src/core/utils/cache.cpp.s
 
+CMakeFiles/XServer.dir/src/core/http/openssl.cpp.o: CMakeFiles/XServer.dir/flags.make
+CMakeFiles/XServer.dir/src/core/http/openssl.cpp.o: ../src/core/http/openssl.cpp
+CMakeFiles/XServer.dir/src/core/http/openssl.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/XServer.dir/src/core/http/openssl.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/core/http/openssl.cpp.o -MF CMakeFiles/XServer.dir/src/core/http/openssl.cpp.o.d -o CMakeFiles/XServer.dir/src/core/http/openssl.cpp.o -c /mnt/d/git/xserver/src/core/http/openssl.cpp
+
+CMakeFiles/XServer.dir/src/core/http/openssl.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/XServer.dir/src/core/http/openssl.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/d/git/xserver/src/core/http/openssl.cpp > CMakeFiles/XServer.dir/src/core/http/openssl.cpp.i
+
+CMakeFiles/XServer.dir/src/core/http/openssl.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/XServer.dir/src/core/http/openssl.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/git/xserver/src/core/http/openssl.cpp -o CMakeFiles/XServer.dir/src/core/http/openssl.cpp.s
+
+CMakeFiles/XServer.dir/src/core/http/httplib.cpp.o: CMakeFiles/XServer.dir/flags.make
+CMakeFiles/XServer.dir/src/core/http/httplib.cpp.o: ../src/core/http/httplib.cpp
+CMakeFiles/XServer.dir/src/core/http/httplib.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/XServer.dir/src/core/http/httplib.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/core/http/httplib.cpp.o -MF CMakeFiles/XServer.dir/src/core/http/httplib.cpp.o.d -o CMakeFiles/XServer.dir/src/core/http/httplib.cpp.o -c /mnt/d/git/xserver/src/core/http/httplib.cpp
+
+CMakeFiles/XServer.dir/src/core/http/httplib.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/XServer.dir/src/core/http/httplib.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/d/git/xserver/src/core/http/httplib.cpp > CMakeFiles/XServer.dir/src/core/http/httplib.cpp.i
+
+CMakeFiles/XServer.dir/src/core/http/httplib.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/XServer.dir/src/core/http/httplib.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/git/xserver/src/core/http/httplib.cpp -o CMakeFiles/XServer.dir/src/core/http/httplib.cpp.s
+
+CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.o: CMakeFiles/XServer.dir/flags.make
+CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.o: ../src/core/http/serviceclient.cpp
+CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.o -MF CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.o.d -o CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.o -c /mnt/d/git/xserver/src/core/http/serviceclient.cpp
+
+CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/d/git/xserver/src/core/http/serviceclient.cpp > CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.i
+
+CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/git/xserver/src/core/http/serviceclient.cpp -o CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.s
+
+CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.o: CMakeFiles/XServer.dir/flags.make
+CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.o: ../src/core/http/serviceserver.cpp
+CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.o -MF CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.o.d -o CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.o -c /mnt/d/git/xserver/src/core/http/serviceserver.cpp
+
+CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/d/git/xserver/src/core/http/serviceserver.cpp > CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.i
+
+CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/git/xserver/src/core/http/serviceserver.cpp -o CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.s
+
 CMakeFiles/XServer.dir/src/core/platform/net.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/core/platform/net.cpp.o: ../src/core/platform/net.cpp
 CMakeFiles/XServer.dir/src/core/platform/net.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_24) "Building CXX object CMakeFiles/XServer.dir/src/core/platform/net.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/XServer.dir/src/core/platform/net.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/core/platform/net.cpp.o -MF CMakeFiles/XServer.dir/src/core/platform/net.cpp.o.d -o CMakeFiles/XServer.dir/src/core/platform/net.cpp.o -c /mnt/d/git/xserver/src/core/platform/net.cpp
 
 CMakeFiles/XServer.dir/src/core/platform/net.cpp.i: cmake_force
@@ -408,7 +478,7 @@ CMakeFiles/XServer.dir/src/core/platform/net.cpp.s: cmake_force
 CMakeFiles/XServer.dir/src/core/app.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/core/app.cpp.o: ../src/core/app.cpp
 CMakeFiles/XServer.dir/src/core/app.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/XServer.dir/src/core/app.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/XServer.dir/src/core/app.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/core/app.cpp.o -MF CMakeFiles/XServer.dir/src/core/app.cpp.o.d -o CMakeFiles/XServer.dir/src/core/app.cpp.o -c /mnt/d/git/xserver/src/core/app.cpp
 
 CMakeFiles/XServer.dir/src/core/app.cpp.i: cmake_force
@@ -422,7 +492,7 @@ CMakeFiles/XServer.dir/src/core/app.cpp.s: cmake_force
 CMakeFiles/XServer.dir/src/core/platform/linux.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/core/platform/linux.cpp.o: ../src/core/platform/linux.cpp
 CMakeFiles/XServer.dir/src/core/platform/linux.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/XServer.dir/src/core/platform/linux.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/XServer.dir/src/core/platform/linux.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/core/platform/linux.cpp.o -MF CMakeFiles/XServer.dir/src/core/platform/linux.cpp.o.d -o CMakeFiles/XServer.dir/src/core/platform/linux.cpp.o -c /mnt/d/git/xserver/src/core/platform/linux.cpp
 
 CMakeFiles/XServer.dir/src/core/platform/linux.cpp.i: cmake_force
@@ -436,7 +506,7 @@ CMakeFiles/XServer.dir/src/core/platform/linux.cpp.s: cmake_force
 CMakeFiles/XServer.dir/src/service/test/service.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/service/test/service.cpp.o: ../src/service/test/service.cpp
 CMakeFiles/XServer.dir/src/service/test/service.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Building CXX object CMakeFiles/XServer.dir/src/service/test/service.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/XServer.dir/src/service/test/service.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/service/test/service.cpp.o -MF CMakeFiles/XServer.dir/src/service/test/service.cpp.o.d -o CMakeFiles/XServer.dir/src/service/test/service.cpp.o -c /mnt/d/git/xserver/src/service/test/service.cpp
 
 CMakeFiles/XServer.dir/src/service/test/service.cpp.i: cmake_force
@@ -447,10 +517,38 @@ CMakeFiles/XServer.dir/src/service/test/service.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/XServer.dir/src/service/test/service.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/git/xserver/src/service/test/service.cpp -o CMakeFiles/XServer.dir/src/service/test/service.cpp.s
 
+CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.o: CMakeFiles/XServer.dir/flags.make
+CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.o: ../src/service/httpclient/service.cpp
+CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.o -MF CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.o.d -o CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.o -c /mnt/d/git/xserver/src/service/httpclient/service.cpp
+
+CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/d/git/xserver/src/service/httpclient/service.cpp > CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.i
+
+CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/git/xserver/src/service/httpclient/service.cpp -o CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.s
+
+CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.o: CMakeFiles/XServer.dir/flags.make
+CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.o: ../src/service/httpserver/service.cpp
+CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.o"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.o -MF CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.o.d -o CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.o -c /mnt/d/git/xserver/src/service/httpserver/service.cpp
+
+CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.i"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /mnt/d/git/xserver/src/service/httpserver/service.cpp > CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.i
+
+CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.s"
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /mnt/d/git/xserver/src/service/httpserver/service.cpp -o CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.s
+
 CMakeFiles/XServer.dir/src/service/tcpserver/service.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/service/tcpserver/service.cpp.o: ../src/service/tcpserver/service.cpp
 CMakeFiles/XServer.dir/src/service/tcpserver/service.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_28) "Building CXX object CMakeFiles/XServer.dir/src/service/tcpserver/service.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Building CXX object CMakeFiles/XServer.dir/src/service/tcpserver/service.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/service/tcpserver/service.cpp.o -MF CMakeFiles/XServer.dir/src/service/tcpserver/service.cpp.o.d -o CMakeFiles/XServer.dir/src/service/tcpserver/service.cpp.o -c /mnt/d/git/xserver/src/service/tcpserver/service.cpp
 
 CMakeFiles/XServer.dir/src/service/tcpserver/service.cpp.i: cmake_force
@@ -464,7 +562,7 @@ CMakeFiles/XServer.dir/src/service/tcpserver/service.cpp.s: cmake_force
 CMakeFiles/XServer.dir/src/service/tcpclient/service.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/service/tcpclient/service.cpp.o: ../src/service/tcpclient/service.cpp
 CMakeFiles/XServer.dir/src/service/tcpclient/service.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_29) "Building CXX object CMakeFiles/XServer.dir/src/service/tcpclient/service.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_36) "Building CXX object CMakeFiles/XServer.dir/src/service/tcpclient/service.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/service/tcpclient/service.cpp.o -MF CMakeFiles/XServer.dir/src/service/tcpclient/service.cpp.o.d -o CMakeFiles/XServer.dir/src/service/tcpclient/service.cpp.o -c /mnt/d/git/xserver/src/service/tcpclient/service.cpp
 
 CMakeFiles/XServer.dir/src/service/tcpclient/service.cpp.i: cmake_force
@@ -478,7 +576,7 @@ CMakeFiles/XServer.dir/src/service/tcpclient/service.cpp.s: cmake_force
 CMakeFiles/XServer.dir/src/service/udpdevice/service.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/service/udpdevice/service.cpp.o: ../src/service/udpdevice/service.cpp
 CMakeFiles/XServer.dir/src/service/udpdevice/service.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_30) "Building CXX object CMakeFiles/XServer.dir/src/service/udpdevice/service.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_37) "Building CXX object CMakeFiles/XServer.dir/src/service/udpdevice/service.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/service/udpdevice/service.cpp.o -MF CMakeFiles/XServer.dir/src/service/udpdevice/service.cpp.o.d -o CMakeFiles/XServer.dir/src/service/udpdevice/service.cpp.o -c /mnt/d/git/xserver/src/service/udpdevice/service.cpp
 
 CMakeFiles/XServer.dir/src/service/udpdevice/service.cpp.i: cmake_force
@@ -492,7 +590,7 @@ CMakeFiles/XServer.dir/src/service/udpdevice/service.cpp.s: cmake_force
 CMakeFiles/XServer.dir/src/service/udpdevice/device.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/service/udpdevice/device.cpp.o: ../src/service/udpdevice/device.cpp
 CMakeFiles/XServer.dir/src/service/udpdevice/device.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_31) "Building CXX object CMakeFiles/XServer.dir/src/service/udpdevice/device.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_38) "Building CXX object CMakeFiles/XServer.dir/src/service/udpdevice/device.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/service/udpdevice/device.cpp.o -MF CMakeFiles/XServer.dir/src/service/udpdevice/device.cpp.o.d -o CMakeFiles/XServer.dir/src/service/udpdevice/device.cpp.o -c /mnt/d/git/xserver/src/service/udpdevice/device.cpp
 
 CMakeFiles/XServer.dir/src/service/udpdevice/device.cpp.i: cmake_force
@@ -506,7 +604,7 @@ CMakeFiles/XServer.dir/src/service/udpdevice/device.cpp.s: cmake_force
 CMakeFiles/XServer.dir/src/service/udpport/service.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/service/udpport/service.cpp.o: ../src/service/udpport/service.cpp
 CMakeFiles/XServer.dir/src/service/udpport/service.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_32) "Building CXX object CMakeFiles/XServer.dir/src/service/udpport/service.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_39) "Building CXX object CMakeFiles/XServer.dir/src/service/udpport/service.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/service/udpport/service.cpp.o -MF CMakeFiles/XServer.dir/src/service/udpport/service.cpp.o.d -o CMakeFiles/XServer.dir/src/service/udpport/service.cpp.o -c /mnt/d/git/xserver/src/service/udpport/service.cpp
 
 CMakeFiles/XServer.dir/src/service/udpport/service.cpp.i: cmake_force
@@ -520,7 +618,7 @@ CMakeFiles/XServer.dir/src/service/udpport/service.cpp.s: cmake_force
 CMakeFiles/XServer.dir/src/service/udpport/device.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/service/udpport/device.cpp.o: ../src/service/udpport/device.cpp
 CMakeFiles/XServer.dir/src/service/udpport/device.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_33) "Building CXX object CMakeFiles/XServer.dir/src/service/udpport/device.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_40) "Building CXX object CMakeFiles/XServer.dir/src/service/udpport/device.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/service/udpport/device.cpp.o -MF CMakeFiles/XServer.dir/src/service/udpport/device.cpp.o.d -o CMakeFiles/XServer.dir/src/service/udpport/device.cpp.o -c /mnt/d/git/xserver/src/service/udpport/device.cpp
 
 CMakeFiles/XServer.dir/src/service/udpport/device.cpp.i: cmake_force
@@ -534,7 +632,7 @@ CMakeFiles/XServer.dir/src/service/udpport/device.cpp.s: cmake_force
 CMakeFiles/XServer.dir/src/utils/app.cpp.o: CMakeFiles/XServer.dir/flags.make
 CMakeFiles/XServer.dir/src/utils/app.cpp.o: ../src/utils/app.cpp
 CMakeFiles/XServer.dir/src/utils/app.cpp.o: CMakeFiles/XServer.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_34) "Building CXX object CMakeFiles/XServer.dir/src/utils/app.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_41) "Building CXX object CMakeFiles/XServer.dir/src/utils/app.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/XServer.dir/src/utils/app.cpp.o -MF CMakeFiles/XServer.dir/src/utils/app.cpp.o.d -o CMakeFiles/XServer.dir/src/utils/app.cpp.o -c /mnt/d/git/xserver/src/utils/app.cpp
 
 CMakeFiles/XServer.dir/src/utils/app.cpp.i: cmake_force
@@ -567,13 +665,20 @@ XServer_OBJECTS = \
 "CMakeFiles/XServer.dir/src/core/open/socket_os.c.o" \
 "CMakeFiles/XServer.dir/src/core/open/openbuffer.cpp.o" \
 "CMakeFiles/XServer.dir/src/core/open/openfile.cpp.o" \
+"CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.o" \
 "CMakeFiles/XServer.dir/src/core/utils/logger.cpp.o" \
 "CMakeFiles/XServer.dir/src/core/utils/config.cpp.o" \
 "CMakeFiles/XServer.dir/src/core/utils/cache.cpp.o" \
+"CMakeFiles/XServer.dir/src/core/http/openssl.cpp.o" \
+"CMakeFiles/XServer.dir/src/core/http/httplib.cpp.o" \
+"CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.o" \
+"CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.o" \
 "CMakeFiles/XServer.dir/src/core/platform/net.cpp.o" \
 "CMakeFiles/XServer.dir/src/core/app.cpp.o" \
 "CMakeFiles/XServer.dir/src/core/platform/linux.cpp.o" \
 "CMakeFiles/XServer.dir/src/service/test/service.cpp.o" \
+"CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.o" \
+"CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.o" \
 "CMakeFiles/XServer.dir/src/service/tcpserver/service.cpp.o" \
 "CMakeFiles/XServer.dir/src/service/tcpclient/service.cpp.o" \
 "CMakeFiles/XServer.dir/src/service/udpdevice/service.cpp.o" \
@@ -605,13 +710,20 @@ XServer: CMakeFiles/XServer.dir/src/core/open/opensocket.cpp.o
 XServer: CMakeFiles/XServer.dir/src/core/open/socket_os.c.o
 XServer: CMakeFiles/XServer.dir/src/core/open/openbuffer.cpp.o
 XServer: CMakeFiles/XServer.dir/src/core/open/openfile.cpp.o
+XServer: CMakeFiles/XServer.dir/src/core/open/opencsv.cpp.o
 XServer: CMakeFiles/XServer.dir/src/core/utils/logger.cpp.o
 XServer: CMakeFiles/XServer.dir/src/core/utils/config.cpp.o
 XServer: CMakeFiles/XServer.dir/src/core/utils/cache.cpp.o
+XServer: CMakeFiles/XServer.dir/src/core/http/openssl.cpp.o
+XServer: CMakeFiles/XServer.dir/src/core/http/httplib.cpp.o
+XServer: CMakeFiles/XServer.dir/src/core/http/serviceclient.cpp.o
+XServer: CMakeFiles/XServer.dir/src/core/http/serviceserver.cpp.o
 XServer: CMakeFiles/XServer.dir/src/core/platform/net.cpp.o
 XServer: CMakeFiles/XServer.dir/src/core/app.cpp.o
 XServer: CMakeFiles/XServer.dir/src/core/platform/linux.cpp.o
 XServer: CMakeFiles/XServer.dir/src/service/test/service.cpp.o
+XServer: CMakeFiles/XServer.dir/src/service/httpclient/service.cpp.o
+XServer: CMakeFiles/XServer.dir/src/service/httpserver/service.cpp.o
 XServer: CMakeFiles/XServer.dir/src/service/tcpserver/service.cpp.o
 XServer: CMakeFiles/XServer.dir/src/service/tcpclient/service.cpp.o
 XServer: CMakeFiles/XServer.dir/src/service/udpdevice/service.cpp.o
@@ -621,7 +733,7 @@ XServer: CMakeFiles/XServer.dir/src/service/udpport/device.cpp.o
 XServer: CMakeFiles/XServer.dir/src/utils/app.cpp.o
 XServer: CMakeFiles/XServer.dir/build.make
 XServer: CMakeFiles/XServer.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_35) "Linking CXX executable XServer"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/mnt/d/git/xserver/linux/CMakeFiles --progress-num=$(CMAKE_PROGRESS_42) "Linking CXX executable XServer"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/XServer.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

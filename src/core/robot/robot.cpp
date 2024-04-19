@@ -19,7 +19,7 @@ XRobot::XRobot(int robotId)
 	service_(0),
 	engineId_(0),
 	isRunning_(false),
-	isLog_(true),
+	isLog_(false),
 	isCostTime_(true),
 	server_(0),
 	minCostTime_(30)

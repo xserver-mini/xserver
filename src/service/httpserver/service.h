@@ -1,8 +1,9 @@
 #pragma once
 
-#include "core/socket/servicesocket.h"
+#include "core/http/serviceserver.h"
+#include "handle.h"
 
-namespace TcpListen
+namespace HttpListen
 {
 
 class Service : public XServiceSocket
@@ -20,15 +21,14 @@ protected:
 	virtual void onSocketAccept(int fd, int afd, const std::string& ip, int port);
 	virtual void onSocketClose(int fd, const char* info);
 	virtual void onSocketError(int fd, const char* info);
-
 };
 
 }
 
-namespace TcpAccept
+namespace HttpAccept
 {
 
-class Service : public XServiceSocket
+class Service : public XServiceHttpServer 
 {
 public:
 	Service(XRobot* robot);
@@ -38,13 +38,10 @@ public:
 	virtual void onInit();
 	virtual void onStart();
 	virtual void onStop();
+	virtual bool onHttp(XHttpRequest& req, XHttpResponse& rep);
 
 protected:
-	virtual void onSocketAccept(int fd, int afd, const std::string& ip, int port);
-	virtual void onSocketOpen(int fd);
-	virtual void onSocketData(int fd, const char* data, size_t size);
-	virtual void onSocketClose(int fd, const char* info);
-	virtual void onSocketError(int fd, const char* info);
+	Handle handle_;
 };
 
 }
