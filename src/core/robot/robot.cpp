@@ -22,7 +22,8 @@ XRobot::XRobot(int robotId)
 	isLog_(false),
 	isCostTime_(true),
 	server_(0),
-	minCostTime_(30)
+	minCostTime_(30),
+	isAwait_(false)
 {
 }
 
@@ -176,4 +177,42 @@ const std::string& XRobot::serviceName()
 void XRobot::setServiceName(const std::string& name)
 {
 	serviceName_ = name;
+}
+
+void XRobot::wakeUp()
+{
+	if (isAwait_)
+	{
+		auto engine = XEngineCentor::GetInstance().getEngine(engineId_);
+		if (!engine)
+		{
+			XASSERT(false);
+			return;
+		}
+		if (!engine->isSingle())
+		{
+			XASSERT(false);
+			return;
+		}
+		engine->robotWakeUp();
+		isAwait_ = false;
+	}
+}
+
+bool XRobot::await()
+{
+	auto engine = XEngineCentor::GetInstance().getEngine(engineId_);
+	if (!engine)
+	{
+		XASSERT(false);
+		return false;
+	}
+	if (!engine->isSingle())
+	{
+		XASSERT(false);
+		return false;
+	}
+	isAwait_ = true;
+	engine->robotAwait();
+	return true;
 }

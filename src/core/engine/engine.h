@@ -33,7 +33,11 @@ public:
 	std::thread::id theThreadId();
 	inline bool isIdle() { return isIdle_; }
 	inline bool isRunning() { return isRunning_; }
+	inline bool isSingle() { return vectRobots_.size() == 1; }
+	void robotAwait();
+	void robotWakeUp();
 	
+	bool isAwait_;
 	const int engineId_;
 protected:
 	static void OnRun(XEngine* engine);

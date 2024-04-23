@@ -128,10 +128,26 @@ struct XHttp
     {
         code_ = -1;
         clen_ = 0;
-        params_.clear();
-        head_.clear();
+        port_ = 0;
+        isHttps_ = false;
+        isChunked_ = false;
+        isRemote_ = false;
+        isClient_ = false;
+        isFinish_ = false;
+        client_ = 0;
+ 
+        domain_.clear();
+        method_.clear();
+        path_.clear();
+        host_.clear();
+        url_.clear();
+        ctype_.clear();
         body_.clear();
+        head_.clear();
         buffer_.clear();
+        paths_.clear();
+        params_.clear();
+        headers_.clear();
     }
 
 private:

@@ -51,6 +51,10 @@ public:
 	const int robotId_;
 	const std::string serviceName_;
 protected:
+	bool await();
+	void wakeUp();
+	bool isWaiting();
+
 	void bindEvent(int eventId, OnEventHandle handle);
 	void sleep(int64_t msecond);
 protected:

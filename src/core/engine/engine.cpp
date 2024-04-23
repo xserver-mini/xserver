@@ -17,7 +17,8 @@ XEngine::XEngine(int engineId)
 	engineId_(engineId),
 	thread_(nullptr),
 	isRunning_(false),
-	isIdle_(true)
+	isIdle_(true),
+	isAwait_(false)
 {
 }
 
@@ -172,6 +173,67 @@ void XEngine::onRun()
 		iter->onStop();
 	}
 	//XLOG("exit");
+}
+
+void XEngine::robotAwait()
+{
+	XASSERT(vectRobots_.size() == 1);
+	isAwait_ = true;
+	XEvent* event = 0;
+	XRobot* robot = 0;
+	while (isAwait_)
+	{
+		isIdle_ = true;
+		std::unique_lock<std::mutex> lock(mutex_);
+		cv_.wait(lock, [this] { return !eventQueue_.empty(); });
+		isIdle_ = false;
+		while (isAwait_)
+		{
+			lock_.lock();
+			if (eventQueue_.empty())
+			{
+				lock_.unlock();
+				break;
+			}
+			event = eventQueue_.front();
+			eventQueue_.pop();
+			lock_.unlock();
+			if (!event)
+			{
+				continue;
+			}
+			if (event->uid_ != receiveUid_)
+			{
+				XERROR("occur error. receiveUid_=%ld, event->uid_=%ld", receiveUid_, event->uid_);
+				assert(false);
+			}
+			receiveUid_++;
+			auto iter = mapRobots_.find(event->dstId_);
+			if (iter != mapRobots_.end())
+			{
+				robot = iter->second;
+				if (robot && robot->engineId_ == engineId_)
+				{
+					robot->onEvent(*event);
+				}
+				else
+				{
+					assert(false);
+				}
+			}
+			else
+			{
+				assert(false);
+			}
+			delete event;
+		}
+	}
+}
+
+void XEngine::robotWakeUp()
+{
+	XASSERT(vectRobots_.size() == 1);
+	isAwait_ = false;
 }
 
 bool XEngine::checkThread()

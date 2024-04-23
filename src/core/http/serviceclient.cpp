@@ -22,8 +22,9 @@ XServiceHttpClient::XClient::~XClient()
     }
     if (request_)
     {
-        delete request_;
-        request_ = 0;
+        request_->clear();
+        //delete request_;
+        //request_ = 0;
     }
 }
 
@@ -315,6 +316,7 @@ XHttpRequest* XServiceHttpClient::createHttp()
     {
         curRequest_ = new XHttpRequest(true);
     }
+    curRequest_->clear();
     return curRequest_;
 }
 
@@ -374,7 +376,7 @@ bool XServiceHttpClient::sendHttp(XHttpRequest* request, const std::function<voi
     client.callback_ = callback;
 
     client.start(this, request);
-    curRequest_ = 0;
+    //curRequest_ = 0;
     return true;
 }
 

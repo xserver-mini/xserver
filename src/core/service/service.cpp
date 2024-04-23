@@ -96,6 +96,41 @@ bool XService::sendEvent(XEvent* event, int targetId)
     return robot_->sendEvent(event, targetId);
 }
 
+bool XService::await()
+{
+    if (!robot_)
+    {
+        XASSERT(false);
+        return false;
+    }
+    if (robot_->isWaiting())
+    {
+        XASSERT(false);
+        return false;
+    }
+    return robot_->await();
+}
+
+void XService::wakeUp()
+{
+    if (!robot_)
+    {
+        XASSERT(false);
+        return ;
+    }
+    robot_->wakeUp();
+}
+
+bool XService::isWaiting()
+{
+    if (!robot_)
+    {
+        XASSERT(false);
+        return false;
+    }
+    return robot_->isWaiting();
+}
+
 bool XService::returnEvent(XEvent* event)
 {
     if (!focusEvent_)

@@ -32,11 +32,16 @@ public:
 	bool isIdle();
 	inline bool isRunning() { return isRunning_; }
 
+	void wakeUp();
+	bool await();
+	inline bool isWaiting() { return isAwait_; }
+
 	const int robotId_;
 	bool isLog_;
 	bool isCostTime_;
 	int minCostTime_;
 	void* server_;
+	bool isAwait_;
 protected:
 	XService* service_;
 	std::string serviceName_;

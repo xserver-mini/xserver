@@ -34,19 +34,30 @@ void Service::onStart()
 	auto request = createHttp();
 	request->setUrl("http://127.0.0.1:8080/index.html");
 	bool ret = httpGet(request, [this](XHttpRequest& req, XHttpResponse& resp) {
-		XDEBUG("==>> code:%d", resp.code_);
+		XDEBUG("==>>1 code:%d", resp.code_);
 		if (!resp.isFinish_)
 		{
+			this->wakeUp();
 			return;
 		}
-		XDEBUG("==>> head[%d]:%s", resp.head_.size(), resp.head_.data());
-		XDEBUG("==>> body[%d]:%s", resp.body_.size(), resp.body_.data());
+		XDEBUG("==>>1 head[%d]:%s", resp.head_.size(), resp.head_.data());
+		XDEBUG("==>>1 body[%d]:%s", resp.body_.size(), resp.body_.data());
+		this->wakeUp();
 	});
-
 	if (!ret)
 	{
 		XINFO("sendHttp url failed. %s", request->url_.data());
+		return;
 	}
+
+	//wakeUp
+	this->await();
+
+	XHttpResponse* resp = request->resp();
+	XDEBUG("==>>2 code:%d", resp->code_);
+	XDEBUG("==>>2 head[%d]:%s", resp->head_.size(), resp->head_.data());
+	XDEBUG("==>>2 body[%d]:%s", resp->body_.size(), resp->body_.data());
+	XINFO("");
 }
 
 void Service::onStop()
