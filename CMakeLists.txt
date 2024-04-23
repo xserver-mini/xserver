@@ -60,10 +60,6 @@ add_executable(${PROJECT_NAME}
 	${X_UTILS_SRC}
 )
 
-if(DEFINED OPENSSL_OPTION)
-    unset(OPENSSL_OPTION CACHE)
-endif()
-
 option(OPENSSL_OPTION "OpenSSL opiton" OFF)
 
 if(${OPENSSL_OPTION})
