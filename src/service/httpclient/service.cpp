@@ -39,7 +39,6 @@ void Service::onStart()
 		XINFO("httpGet url failed. %s", request->url_.data());
 		return;
 	}
-
 	XDEBUG("==>> code:%d", response->code_);
 	XDEBUG("==>> head[%d]:%s", response->head_.size(), response->head_.data());
 	XDEBUG("==>> body[%d]:%s", response->body_.size(), response->body_.data());
