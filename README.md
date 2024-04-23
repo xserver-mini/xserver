@@ -13,13 +13,8 @@ cmake --build .
 ./XServer
 ```
 
-开发C++高并发服务器应用很难？快来使用XServer吧，它可以用最简单的方式开发C++高并发服务器程序。
-
-XServer是一款超级简单的服务器框架，开发者历时8年打造，以最简单的方式开发C++服务器程序。CMake构建，跨平台设计，可以运行在Windows、Linux、Android等平台。
-
-
 Without using coroutines, special methods can be used to achieve synchronous execution.
-(Using loop to implement coroutine)
+(Using while and condition variables to implement coroutine)
 ```C++
 	auto request = createHttp();
 	request->setUrl("http://127.0.0.1:8080/index.html");
@@ -34,4 +29,10 @@ Without using coroutines, special methods can be used to achieve synchronous exe
 	XDEBUG("==>> body[%d]:%s", response->body_.size(), response->body_.data());
 	XINFO("");
 ```
-不使用协程，特殊方式实现同步执行
+不使用协程，特殊方式实现同步执行。（条件变量和while循环，实现高效率同步执行）
+
+
+开发C++高并发服务器应用很难？快来使用XServer吧，它可以用最简单的方式开发C++高并发服务器程序。
+
+XServer是一款超级简单的服务器框架，开发者历时8年打造，以最简单的方式开发C++服务器程序。CMake构建，跨平台设计，可以运行在Windows、Linux、Android等平台。
+
