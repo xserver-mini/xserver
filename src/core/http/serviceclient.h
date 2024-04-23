@@ -64,10 +64,13 @@ public:
     virtual void onSocketWarning(int fd, const char* info);
 
     XHttpRequest* createHttp();
-    bool sendHttp(XHttpRequest* request);
     bool httpGet(XHttpRequest* request, const std::function<void(XHttpRequest&, XHttpResponse&)>& callback);
     bool httpPost(XHttpRequest* request, const std::function<void(XHttpRequest&, XHttpResponse&)>& callback);
     bool sendHttp(XHttpRequest* request, const std::function<void(XHttpRequest&, XHttpResponse&)>& callback);
+
+    XHttpResponse* httpGet(XHttpRequest* request);
+    XHttpResponse* httpPost(XHttpRequest* request);
+    XHttpResponse* sendHttp(XHttpRequest* request);
 
     virtual void onHttp(XHttpRequest& req, XHttpResponse& rep);
 

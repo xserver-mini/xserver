@@ -320,9 +320,32 @@ XHttpRequest* XServiceHttpClient::createHttp()
     return curRequest_;
 }
 
-bool XServiceHttpClient::sendHttp(XHttpRequest* request)
+XHttpResponse* XServiceHttpClient::sendHttp(XHttpRequest* request)
 {
-    return sendHttp(request, 0);
+    bool ret = sendHttp(request, [this](XHttpRequest& req, XHttpResponse& resp) {
+        this->wakeUp();
+        });
+    if (!ret)
+    {
+        XINFO("sendHttp url failed. %s", request->url_.data());
+        return 0;
+    }
+
+    //wakeUp
+    this->await();
+    return request->resp();
+}
+
+XHttpResponse* XServiceHttpClient::httpGet(XHttpRequest* request)
+{
+    request->method_ = "GET";
+    return sendHttp(request);
+}
+
+XHttpResponse* XServiceHttpClient::httpPost(XHttpRequest* request)
+{
+    request->method_ = "POST";
+    return sendHttp(request);
 }
 
 bool XServiceHttpClient::httpGet(XHttpRequest* request, const std::function<void(XHttpRequest&, XHttpResponse&)>& callback)
