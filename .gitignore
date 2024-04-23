@@ -36,3 +36,11 @@
 /win32/x64
 /win32/Debug
 /win32/XServer.dir
+/win32/CMakeFiles
+/win32/cmake_install.cmake
+/win32/CMakeCache.txt
+/win32/CMakeFiles
+/linux/CMakeFiles
+/linux/cmake_install.cmake
+/linux/CMakeCache.txt
+/linux/XServer

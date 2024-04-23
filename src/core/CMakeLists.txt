@@ -3,6 +3,7 @@ set(X_CORE_SRC)
 set(FILE_HPP
 	service/service.h
 	service/servicecentor.h
+
 	robot/event.h
 	robot/robot.h
 	robot/robotcentor.h
@@ -23,8 +24,8 @@ set(FILE_HPP
 	open/openjson.h
 	open/openfile.h
 	open/opencsv.h
+	open/openstring.h
 
-	utils/common.h
 	utils/spinlock.h
 	utils/logger.h
 	utils/config.h
@@ -38,6 +39,7 @@ set(FILE_HPP
 	platform/net.h
 
 	app.h
+	common.h
 )
 
 set(FILE_CPP
@@ -64,6 +66,7 @@ set(FILE_CPP
 	open/openjson.cpp
 	open/openfile.cpp
 	open/opencsv.cpp
+	open/openstring.cpp
 
 	utils/logger.cpp
 	utils/config.cpp

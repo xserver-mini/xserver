@@ -1,3 +1,0 @@
-/mnt/d/git/xserver/linux/CMakeFiles/XServer.dir
-/mnt/d/git/xserver/linux/CMakeFiles/edit_cache.dir
-/mnt/d/git/xserver/linux/CMakeFiles/rebuild_cache.dir

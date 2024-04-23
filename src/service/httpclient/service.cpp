@@ -33,7 +33,7 @@ void Service::onStart()
 
 	auto request = createHttp();
 	request->setUrl("http://127.0.0.1:8080/index.html");
-	bool ret = sendHttp(request, [this](XHttpRequest& req, XHttpResponse& resp) {
+	bool ret = httpGet(request, [this](XHttpRequest& req, XHttpResponse& resp) {
 		XDEBUG("==>> code:%d", resp.code_);
 		if (!resp.isFinish_)
 		{

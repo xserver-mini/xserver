@@ -339,7 +339,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\git\xserver\src\core\open\openjson.h" />
     <ClInclude Include="D:\git\xserver\src\core\open\openfile.h" />
     <ClInclude Include="D:\git\xserver\src\core\open\opencsv.h" />
-    <ClInclude Include="D:\git\xserver\src\core\utils\common.h" />
+    <ClInclude Include="D:\git\xserver\src\core\open\openstring.h" />
     <ClInclude Include="D:\git\xserver\src\core\utils\spinlock.h" />
     <ClInclude Include="D:\git\xserver\src\core\utils\logger.h" />
     <ClInclude Include="D:\git\xserver\src\core\utils\config.h" />
@@ -350,6 +350,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\git\xserver\src\core\http\serviceserver.h" />
     <ClInclude Include="D:\git\xserver\src\core\platform\net.h" />
     <ClInclude Include="D:\git\xserver\src\core\app.h" />
+    <ClInclude Include="D:\git\xserver\src\core\common.h" />
     <ClInclude Include="D:\git\xserver\src\core\open\wepoll.h" />
     <ClInclude Include="D:\git\xserver\src\core\platform\utils-win32.h" />
     <ClCompile Include="D:\git\xserver\src\core\service\service.cpp">
@@ -373,6 +374,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\git\xserver\src\core\open\openbuffer.cpp" />
     <ClCompile Include="D:\git\xserver\src\core\open\openfile.cpp" />
     <ClCompile Include="D:\git\xserver\src\core\open\opencsv.cpp" />
+    <ClCompile Include="D:\git\xserver\src\core\open\openstring.cpp" />
     <ClCompile Include="D:\git\xserver\src\core\utils\logger.cpp" />
     <ClCompile Include="D:\git\xserver\src\core\utils\config.cpp" />
     <ClCompile Include="D:\git\xserver\src\core\utils\cache.cpp" />

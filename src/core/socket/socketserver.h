@@ -7,7 +7,7 @@
  ***************************************************************************/
 
 
-#include "../utils/common.h"
+#include "../common.h"
 
 class XRobot;
 class XEngine;

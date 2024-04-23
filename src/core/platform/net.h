@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../utils/common.h"
+#include "../common.h"
 
 class XNet
 {

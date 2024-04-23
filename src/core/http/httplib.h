@@ -16,7 +16,7 @@
 #include <string>
 
 #include "core/robot/event.h"
-#include "core/utils/common.h"
+#include "core/common.h"
 
 class XHttpBuffer
 {
@@ -74,7 +74,6 @@ class XHttpClient
 struct XHttp
 {
     int fd_;
-    int robotId_;
     int uid_;
     int code_;
     int clen_;
@@ -85,8 +84,9 @@ struct XHttp
     bool isClient_;
     bool isRemote_;
     bool isFinish_;
-    std::string domain_;
+    int robotId_;
     unsigned int port_;
+    std::string domain_;
     std::string method_;
     std::string path_;
     std::string host_;
@@ -106,8 +106,8 @@ struct XHttp
     inline void setIp(const std::string& ip) { ip_ = ip; }
     inline void setUrl(const std::string& url) { url_ = url; }
 
+    inline std::string& getBody() { return body_; }
     inline void getHead(std::string& head) { head.append((const char*)head_.data(), head_.size()); }
-    inline void getBody(std::string& body) { body.append((const char*)body_.data(), body_.size()); }
     inline std::string& setParam(const std::string& key) { return params_[key]; }
     std::string& header(const std::string& key);
     bool hasHeader(const std::string& key);

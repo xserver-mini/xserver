@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "../utils/common.h"
+#include "../common.h"
 #include "../robot/event.h"
 
 #define BIND_EVENT(__CLASS__) bindEvent(__CLASS__::EEventID, (OnEventHandle)&Handle::On##__CLASS__)

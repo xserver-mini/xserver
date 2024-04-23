@@ -9,7 +9,7 @@
 
 #pragma once
 
-#include "../utils/common.h"
+#include "../common.h"
 
 class XEvent;
 class XService;

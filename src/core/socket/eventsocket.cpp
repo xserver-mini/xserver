@@ -8,7 +8,7 @@
 
 
 #include "eventsocket.h"
-#include "../utils/common.h"
+#include "../common.h"
 
 //XEventSocket
 XEventSocket::XEventSocket()

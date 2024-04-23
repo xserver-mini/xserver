@@ -323,6 +323,18 @@ bool XServiceHttpClient::sendHttp(XHttpRequest* request)
     return sendHttp(request, 0);
 }
 
+bool XServiceHttpClient::httpGet(XHttpRequest* request, const std::function<void(XHttpRequest&, XHttpResponse&)>& callback)
+{
+    request->method_ = "GET";
+    return sendHttp(request, callback);
+}
+
+bool XServiceHttpClient::httpPost(XHttpRequest* request, const std::function<void(XHttpRequest&, XHttpResponse&)>& callback)
+{
+    request->method_ = "POST";
+    return sendHttp(request, callback);
+}
+
 bool XServiceHttpClient::sendHttp(XHttpRequest* request, const std::function<void(XHttpRequest&, XHttpResponse&)>& callback)
 {
     if (!request)

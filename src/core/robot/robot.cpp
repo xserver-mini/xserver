@@ -12,7 +12,7 @@
 #include "../engine/engine.h"
 #include "../engine/enginecentor.h"
 #include "../service/servicecentor.h"
-#include "../utils/common.h"
+#include "../common.h"
 
 XRobot::XRobot(int robotId)
 	:robotId_(robotId),

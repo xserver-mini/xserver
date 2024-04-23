@@ -11,7 +11,7 @@
 #include <functional>
 #include "openssl.h"
 #include "httplib.h"
-#include "../utils/common.h"
+#include "../common.h"
 #include "../socket/servicesocket.h"
 
 
@@ -65,7 +65,10 @@ public:
 
     XHttpRequest* createHttp();
     bool sendHttp(XHttpRequest* request);
+    bool httpGet(XHttpRequest* request, const std::function<void(XHttpRequest&, XHttpResponse&)>& callback);
+    bool httpPost(XHttpRequest* request, const std::function<void(XHttpRequest&, XHttpResponse&)>& callback);
     bool sendHttp(XHttpRequest* request, const std::function<void(XHttpRequest&, XHttpResponse&)>& callback);
+
     virtual void onHttp(XHttpRequest& req, XHttpResponse& rep);
 
 protected:

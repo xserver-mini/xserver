@@ -64,6 +64,9 @@
     <ClCompile Include="D:\git\xserver\src\core\open\opencsv.cpp">
       <Filter>core\open</Filter>
     </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\core\open\openstring.cpp">
+      <Filter>core\open</Filter>
+    </ClCompile>
     <ClCompile Include="D:\git\xserver\src\core\utils\logger.cpp">
       <Filter>core\utils</Filter>
     </ClCompile>
@@ -192,8 +195,8 @@
     <ClInclude Include="D:\git\xserver\src\core\open\opencsv.h">
       <Filter>core\open</Filter>
     </ClInclude>
-    <ClInclude Include="D:\git\xserver\src\core\utils\common.h">
-      <Filter>core\utils</Filter>
+    <ClInclude Include="D:\git\xserver\src\core\open\openstring.h">
+      <Filter>core\open</Filter>
     </ClInclude>
     <ClInclude Include="D:\git\xserver\src\core\utils\spinlock.h">
       <Filter>core\utils</Filter>
@@ -223,6 +226,9 @@
       <Filter>core\platform</Filter>
     </ClInclude>
     <ClInclude Include="D:\git\xserver\src\core\app.h">
+      <Filter>core</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\common.h">
       <Filter>core</Filter>
     </ClInclude>
     <ClInclude Include="D:\git\xserver\src\core\open\wepoll.h">

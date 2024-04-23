@@ -7,7 +7,7 @@
  ***************************************************************************/
 
 #include "cache.h"
-#include "common.h"
+#include "../common.h"
 #include "../open/openfile.h"
 
 using namespace open;
