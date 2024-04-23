@@ -7,19 +7,38 @@
  ***************************************************************************/
 
 #include "event.h"
+#include <cassert>
 
 //XEvent
 XEvent::XEvent()
 	:uid_(0),
+	ref_(1),
 	srcId_(-1),
 	dstId_(-1),
 	eventId_(-1),
+	sessionId_(0),
 	eEventType_(EXEventTypeBase)
 {
 }
 
 XEvent::~XEvent()
 {
+	assert(ref_ == 0);
+}
+
+void XEvent::retain()
+{
+	++ref_;
+}
+
+void XEvent::release()
+{
+	assert(ref_ > 0);
+	--ref_;
+	if (ref_ == 0)
+	{
+		delete this;
+	}
 }
 
 int XEvent::getEventId() const

@@ -83,7 +83,7 @@ void XApp::onEvent(XEvent* event)
 	}
 	if (event->dstId_ != EXRobotIDMain)
 	{
-		delete event;
+		event->release();
 		assert(false);
 		return;
 	}
@@ -132,7 +132,7 @@ void XApp::onMainThread()
 		}
 		receiveUid_++;
 		onMainThreadEvent(event);
-		delete event;
+		event->release();
 	}
 }
 

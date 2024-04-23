@@ -389,8 +389,10 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClCompile Include="D:\git\xserver\src\core\open\wepoll.c" />
     <ClCompile Include="D:\git\xserver\src\core\platform\utils-win32.cpp" />
     <ClCompile Include="D:\git\xserver\src\core\platform\win32.cpp" />
-    <ClInclude Include="D:\git\xserver\src\service\test\service.h" />
-    <ClInclude Include="D:\git\xserver\src\service\test\handle.h" />
+    <ClInclude Include="D:\git\xserver\src\service\testa\service.h" />
+    <ClInclude Include="D:\git\xserver\src\service\testa\handle.h" />
+    <ClInclude Include="D:\git\xserver\src\service\testb\service.h" />
+    <ClInclude Include="D:\git\xserver\src\service\testb\handle.h" />
     <ClInclude Include="D:\git\xserver\src\service\httpclient\service.h" />
     <ClInclude Include="D:\git\xserver\src\service\httpserver\service.h" />
     <ClInclude Include="D:\git\xserver\src\service\httpserver\handle.h" />
@@ -407,8 +409,11 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\git\xserver\src\service\udpport\handle.h" />
     <ClInclude Include="D:\git\xserver\src\service\udpport\event.h" />
     <ClInclude Include="D:\git\xserver\src\service\udpport\data.h" />
-    <ClCompile Include="D:\git\xserver\src\service\test\service.cpp">
-      <ObjectFileName>$(IntDir)/src/service/test/service.cpp.obj</ObjectFileName>
+    <ClCompile Include="D:\git\xserver\src\service\testa\service.cpp">
+      <ObjectFileName>$(IntDir)/src/service/testa/service.cpp.obj</ObjectFileName>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\service\testb\service.cpp">
+      <ObjectFileName>$(IntDir)/src/service/testb/service.cpp.obj</ObjectFileName>
     </ClCompile>
     <ClCompile Include="D:\git\xserver\src\service\httpclient\service.cpp">
       <ObjectFileName>$(IntDir)/src/service/httpclient/service.cpp.obj</ObjectFileName>

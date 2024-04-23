@@ -324,7 +324,7 @@ XHttpResponse* XServiceHttpClient::sendHttp(XHttpRequest* request)
 {
     bool ret = sendHttp(request, [this](XHttpRequest& req, XHttpResponse& resp) {
         this->wakeUp();
-        });
+    });
     if (!ret)
     {
         XINFO("sendHttp url failed. %s", request->url_.data());

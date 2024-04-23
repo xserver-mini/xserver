@@ -103,8 +103,11 @@
     <ClCompile Include="D:\git\xserver\src\core\platform\win32.cpp">
       <Filter>core\platform</Filter>
     </ClCompile>
-    <ClCompile Include="D:\git\xserver\src\service\test\service.cpp">
-      <Filter>service\test</Filter>
+    <ClCompile Include="D:\git\xserver\src\service\testa\service.cpp">
+      <Filter>service\testa</Filter>
+    </ClCompile>
+    <ClCompile Include="D:\git\xserver\src\service\testb\service.cpp">
+      <Filter>service\testb</Filter>
     </ClCompile>
     <ClCompile Include="D:\git\xserver\src\service\httpclient\service.cpp">
       <Filter>service\httpclient</Filter>
@@ -237,11 +240,17 @@
     <ClInclude Include="D:\git\xserver\src\core\platform\utils-win32.h">
       <Filter>core\platform</Filter>
     </ClInclude>
-    <ClInclude Include="D:\git\xserver\src\service\test\service.h">
-      <Filter>service\test</Filter>
+    <ClInclude Include="D:\git\xserver\src\service\testa\service.h">
+      <Filter>service\testa</Filter>
     </ClInclude>
-    <ClInclude Include="D:\git\xserver\src\service\test\handle.h">
-      <Filter>service\test</Filter>
+    <ClInclude Include="D:\git\xserver\src\service\testa\handle.h">
+      <Filter>service\testa</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\testb\service.h">
+      <Filter>service\testb</Filter>
+    </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\service\testb\handle.h">
+      <Filter>service\testb</Filter>
     </ClInclude>
     <ClInclude Include="D:\git\xserver\src\service\httpclient\service.h">
       <Filter>service\httpclient</Filter>
@@ -359,8 +368,11 @@
     <Filter Include="service\tcpserver">
       <UniqueIdentifier>{1D25CED3-19B3-318E-82B3-0F6CFDC6443C}</UniqueIdentifier>
     </Filter>
-    <Filter Include="service\test">
-      <UniqueIdentifier>{C196D2C3-FC8A-3EC8-A24E-CE11D604278A}</UniqueIdentifier>
+    <Filter Include="service\testa">
+      <UniqueIdentifier>{F432314D-C432-3D70-AC3E-92E16F42CDBF}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="service\testb">
+      <UniqueIdentifier>{BA86E6E6-FF7D-311C-8DDD-8C420511418C}</UniqueIdentifier>
     </Filter>
     <Filter Include="service\udpdevice">
       <UniqueIdentifier>{E087F3C3-B037-34FD-B60E-68066CCB7DEC}</UniqueIdentifier>

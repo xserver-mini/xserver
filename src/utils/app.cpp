@@ -7,7 +7,8 @@
 #include "core/service/servicecentor.h"
 #include "core/socket/socketcentor.h"
 
-#include "service/test/service.h"
+#include "service/testa/service.h"
+#include "service/testb/service.h"
 #include "service/tcpserver/service.h"
 #include "service/tcpclient/service.h"
 
@@ -37,7 +38,8 @@ void App::start()
 	//register task
 	auto& serviceCentor = XServiceCentor::GetInstance();
 	//name bind Service
-	serviceCentor.registerService<Test::Service>("Test");
+	serviceCentor.registerService<TestA::Service>("TestA");
+	serviceCentor.registerService<TestB::Service>("TestB");
 
 	serviceCentor.registerService<TcpClient::Service>("TcpClient");
 	serviceCentor.registerService<TcpListen::Service>("TcpListen");
@@ -49,7 +51,8 @@ void App::start()
 
 	//start robot;
 	auto& robotCentor = XRobotCentor::GetInstance();
-	robotCentor.createSingleRobot<XRobot>(ERobotIDTest, "Test");
+	robotCentor.createSingleRobot<XRobot>(ERobotIDTestA, "TestA");
+	robotCentor.createSingleRobot<XRobot>(ERobotIDTestB, "TestB");
 	robotCentor.createSingleRobot<XRobot>(ERobotIDTcpClient, "TcpClient");
 
 	robotCentor.createSingleRobot<XRobot>(ERobotIDHttpClient, "HttpClient");

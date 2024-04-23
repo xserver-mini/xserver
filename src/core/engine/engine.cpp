@@ -165,7 +165,7 @@ void XEngine::onRun()
 			{
 				assert(false);
 			}
-			delete event;
+			event->release();
 		}
 	}
 	for (auto& iter : vectRobots_)
@@ -225,7 +225,7 @@ void XEngine::robotAwait()
 			{
 				assert(false);
 			}
-			delete event;
+			event->release();
 		}
 	}
 }

@@ -102,7 +102,7 @@ bool XRobotCentor::sendEventInter(XEvent* event)
         }
         return engine->sendEvent(event);
     } while (false);
-    delete event;
+    event->release();
     return false;
 }
 

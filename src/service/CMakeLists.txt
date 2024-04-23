@@ -1,8 +1,11 @@
 set(X_SERVICE_SRC)
 
 set(FILE_HPP
-	test/service.h
-	test/handle.h
+	testa/service.h
+	testa/handle.h
+
+	testb/service.h
+	testb/handle.h
 
 	httpclient/service.h
 	httpserver/service.h
@@ -26,7 +29,8 @@ set(FILE_HPP
 )
 
 set(FILE_CPP
-	test/service.cpp
+	testa/service.cpp
+	testb/service.cpp
 
 	httpclient/service.cpp
 	httpserver/service.cpp

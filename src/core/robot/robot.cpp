@@ -93,7 +93,7 @@ bool XRobot::sendEvent(XEvent* event, int targetId)
 		if (!engine)
 		{
 			XERROR("[%s][%s][%d => %d] engine == 0. engineId_=%d", serviceName_.data(), event->getEventName(), event->srcId_, event->dstId_, engineId_);
-			delete event;
+			event->release();
 			assert(false);
 			return false;
 		}

@@ -4,9 +4,10 @@
 
 enum ERobotID
 {
-	ERobotIDTest   = 100,
-    ERobotIDTcpClient = 101,
-    ERobotIDHttpClient = 111,
+	ERobotIDTestA   = 101,
+    ERobotIDTestB   = 102,
+    ERobotIDTcpClient = 111,
+    ERobotIDHttpClient = 121,
 
     ERobotIDUdpPort = 201,
     ERobotIDUdpDevice = 202,

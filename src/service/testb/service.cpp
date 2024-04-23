@@ -1,17 +1,15 @@
 #include "service.h"
-#include <cassert>
-#include <iostream>
 #include "utils/event.h"
 #include "handle.h"
 
-namespace Test
+namespace TestB
 {
 
 Service::Service(XRobot* robot)
 	:XService(robot)
 {
 	assert(robot);
-	BIND_EVENT(EventPingPong);
+	BIND_EVENT(EventPing);
 }
 
 Service::~Service()
@@ -31,11 +29,6 @@ void Service::onInit()
 void Service::onStart()
 {
 	XDEBUG("===>>");
-
-	auto event = new EventPingPong;
-	sendEvent(event, ERobotIDTest);
-	//or 
-	//sendEvent(event, robotId_);
 }
 
 void Service::onStop()

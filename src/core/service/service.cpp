@@ -14,6 +14,7 @@
 XService::XService(XRobot* robot)
 	:robot_(robot),
     timerId_(-1),
+    sessionId_(1),
     focusEvent_(0),
     robotId_(robot ? robot->robotId_ : -1),
     serviceName_(robot ? robot->serviceName() : "XService")
@@ -96,6 +97,50 @@ bool XService::sendEvent(XEvent* event, int targetId)
     return robot_->sendEvent(event, targetId);
 }
 
+bool XService::callEvent(XEvent* event, int targetId, const std::function<void(const XEvent*)>& callback)
+{
+    if (sessionId_ <= 0)
+    {
+        sessionId_ = 1;
+    }
+    event->sessionId_ = sessionId_;
+    if (!robot_)
+    {
+        XERROR("robot_==null. %s[%d] targetId=%d", serviceName_.data(), robotId_, targetId);
+        assert(false);
+        return false;
+    }
+
+    if (robot_->sendEvent(event, targetId))
+    {
+        XASSERT(mapSessions_.find(sessionId_) == mapSessions_.end());
+        mapSessions_[sessionId_] = callback;
+        sessionId_++;
+        return true;
+    }
+    return false;
+}
+
+std::shared_ptr<const XEvent> XService::callEvent(XEvent* event, int targetId)
+{
+    XEvent* retEvent = 0;
+    bool ret = callEvent(event, targetId, [this, &retEvent](const XEvent* revent) {
+        retEvent = (XEvent*)revent;
+        retEvent->retain();
+        this->wakeUp();
+    });
+    if (!ret)
+    {
+        return std::shared_ptr<const XEvent>();
+    }
+    if (!this->await())
+    {
+        return std::shared_ptr<const XEvent>();
+    }
+    retEvent->ref_ = 0;
+    return std::shared_ptr<const XEvent>(retEvent);
+}
+
 bool XService::await()
 {
     if (!robot_)
@@ -144,6 +189,10 @@ bool XService::returnEvent(XEvent* event)
         XASSERT(false);
         return false;
     }
+    if (focusEvent_->sessionId_ > 0)
+    {
+        event->sessionId_ = -focusEvent_->sessionId_;
+    }
     return sendEvent(event, dstId);
 }
 
@@ -156,6 +205,19 @@ void XService::onEvent(const XEvent& event)
         return;
     }
     XASSERT(!focusEvent_);
+
+    if (event.sessionId_ < 0)
+    {
+        auto sessionId = -event.sessionId_;
+        auto iter = mapSessions_.find(sessionId);
+        if (iter != mapSessions_.end())
+        {
+            iter->second(&event);
+            mapSessions_.erase(iter);
+        }
+        return;
+    }
+
     focusEvent_ = &event;
     if (event.eEventType_ == EXEventTypeUpdate)
     {

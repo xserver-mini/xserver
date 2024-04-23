@@ -1,10 +1,10 @@
-# xserver
+# XServer
 
 Is it difficult to develop C++ high-concurrency server applications? Come and use XServer, it allows you to develop C++ high-concurrency server programs in the simplest way.
 
 XServer is a super simple server framework, developed by the developer over 8 years, to develop C++ server programs in the simplest way. Built with CMake, cross-platform design, it can run on Windows, Linux, Android and other platforms.
 
-
+## Build
 ```
 mkdir build
 cd build
@@ -13,8 +13,11 @@ cmake --build .
 ./XServer
 ```
 
-Without using coroutines, special methods can be used to achieve synchronous execution.
-(Using while and condition variables to implement coroutine)
+## Synchronous execution
+
+Without using coroutines, using while and condition variables to implement coroutine.
+
+#### 1.Synchronous Http
 ```C++
 	auto request = createHttp();
 	request->setUrl("http://127.0.0.1:8080/index.html");
@@ -27,9 +30,29 @@ Without using coroutines, special methods can be used to achieve synchronous exe
 	XDEBUG("==>> code:%d", response->code_);
 	XDEBUG("==>> head[%d]:%s", response->head_.size(), response->head_.data());
 	XDEBUG("==>> body[%d]:%s", response->body_.size(), response->body_.data());
-	XINFO("");
 ```
-不使用协程，特殊方式实现同步执行。（条件变量和while循环，实现高效率同步执行）
+
+#### 2.Synchronous Event
+```C++
+	//ping - pong
+	auto eventPing = new EventPing;
+	auto retEvent = callEvent(eventPing, ERobotIDTestB);
+	if (retEvent)
+	{
+		assert(retEvent->getEventId() == EventPong::EEventID);
+		const EventPong* eventPong = dynamic_cast<const EventPong*>(retEvent.get());
+		assert(eventPong);
+	}
+	else
+	{
+		assert(false);
+	}
+```
+
+
+不使用协程，条件变量和while循环，实现高效率同步执行。无需setjmp或者切换UContext.
+
+
 
 
 开发C++高并发服务器应用很难？快来使用XServer吧，它可以用最简单的方式开发C++高并发服务器程序。

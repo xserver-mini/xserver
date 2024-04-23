@@ -11,6 +11,8 @@
 
 #include "../common.h"
 #include "../robot/event.h"
+#include <functional>
+#include <memory>
 
 #define BIND_EVENT(__CLASS__) bindEvent(__CLASS__::EEventID, (OnEventHandle)&Handle::On##__CLASS__)
 #define HEADER_EVENT(__CLASS__) static void On##__CLASS__(Service&, const __CLASS__&)
@@ -39,6 +41,9 @@ public:
 	virtual void onEvent(const XEvent& event);
 	bool returnEvent(XEvent* event);
 
+	virtual bool callEvent(XEvent* event, int targetId, const std::function<void(const XEvent*)>& callback);
+	virtual std::shared_ptr<const XEvent> callEvent(XEvent* event, int targetId = 0);
+
 	//update
 	void sendEventUpdate();
 	virtual void onEventUpdate();
@@ -59,7 +64,10 @@ protected:
 	void sleep(int64_t msecond);
 protected:
 	int64_t timerId_;
+	int32_t sessionId_;
 	std::unordered_map<int, OnEventHandle> mapEventHandles_;
+	std::unordered_map<int, std::function<void(const XEvent*)>> mapSessions_;
+
 	const XEvent* focusEvent_;
 private:
 	XRobot* robot_;

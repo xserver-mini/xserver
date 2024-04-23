@@ -2,7 +2,7 @@
 
 #include "core/service/service.h"
 
-namespace Test
+namespace TestB
 {
 
 class Service : public XService

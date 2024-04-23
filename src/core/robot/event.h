@@ -38,14 +38,18 @@ public:
 	};
 	XEvent();
 	virtual ~XEvent();
+	void retain();
+	void release();
 
 	virtual int getEventId() const;
 	virtual const char* getEventName() const;
 
 	int srcId_;
 	int dstId_;
+	int sessionId_;
 	long long uid_;
 	int eventId_;
+	short ref_;
 	EXEventType eEventType_;
 };
 
