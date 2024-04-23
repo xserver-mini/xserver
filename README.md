@@ -50,7 +50,7 @@ Without using coroutines, using while and condition variables to implement corou
 ```
 
 
-不使用协程，条件变量和while循环，实现高效率同步执行。无需setjmp或者切换UContext.
+不使用协程，而使用条件变量和while循环，实现高效率同步执行。无需setjmp或者切换UContext.
 
 
 
