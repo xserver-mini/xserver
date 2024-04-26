@@ -287,7 +287,7 @@ void XServiceHttpClient::onSocketClose(int fd, const char* info)
 
         mapFdToClient_.erase(iter);
     }
-    XDEBUG("%s[%d]fd=%d,%s\n", serviceName_.data(), robotId_, fd, info);
+    //XDEBUG("%s[%d]fd=%d,%s\n", serviceName_.data(), robotId_, fd, info);
 }
 
 void XServiceHttpClient::onSocketError(int fd, const char* info)
@@ -302,7 +302,7 @@ void XServiceHttpClient::onSocketError(int fd, const char* info)
 
         mapFdToClient_.erase(iter);
     }
-    XDEBUG("%s[%d]fd=%d,%s\n", serviceName_.data(), robotId_, fd, info);
+    //XDEBUG("%s[%d]fd=%d,%s\n", serviceName_.data(), robotId_, fd, info);
 }
 
 void XServiceHttpClient::onSocketWarning(int fd, const char* info)
