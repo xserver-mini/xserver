@@ -178,6 +178,11 @@ bool XService::isWaiting()
 
 bool XService::returnEvent(XEvent* event)
 {
+    if (robot_->isAwait_)
+    {
+        XASSERT(false);
+        return false;
+    }
     if (!focusEvent_)
     {
         XASSERT(false);
@@ -204,8 +209,7 @@ void XService::onEvent(const XEvent& event)
         XASSERT(false);
         return;
     }
-    XASSERT(!focusEvent_);
-
+    //XASSERT(!focusEvent_);
     if (event.sessionId_ < 0)
     {
         auto sessionId = -event.sessionId_;
@@ -218,11 +222,11 @@ void XService::onEvent(const XEvent& event)
         return;
     }
 
-    focusEvent_ = &event;
+    //focusEvent_ = &event;
     if (event.eEventType_ == EXEventTypeUpdate)
     {
         onEventUpdate();
-        focusEvent_ = 0;
+        //focusEvent_ = 0;
         return;
     }
     if (event.eEventType_ == EXEventTypeTimer)
@@ -230,19 +234,19 @@ void XService::onEvent(const XEvent& event)
         if (event.getEventId() != XEventTimerMsg::EEventID)
         {
             XASSERT(false);
-            focusEvent_ = 0;
+            //focusEvent_ = 0;
             return;
         }
         const XEventTimerMsg* timeEvent = dynamic_cast<const XEventTimerMsg*>(&event);
         if (!timeEvent)
         {
             XASSERT(false);
-            focusEvent_ = 0;
+            //focusEvent_ = 0;
             return;
         }
         timerId_ = timeEvent->timerId_;
         onEventTimer(*timeEvent);
-        focusEvent_ = 0;
+        //focusEvent_ = 0;
         return;
     }
 
@@ -252,11 +256,11 @@ void XService::onEvent(const XEvent& event)
     {
         XERROR("event no exist. %s[%d] eventId=%d", serviceName_.data(), robotId_, eventId);
         assert(false);
-        focusEvent_ = 0;
+        //focusEvent_ = 0;
         return;
     }
     iter->second(*this, event);
-    focusEvent_ = 0;
+    //focusEvent_ = 0;
 }
 
 void XService::bindEvent(int eventId, OnEventHandle handle)

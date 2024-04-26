@@ -138,7 +138,16 @@ void XRobot::onEvent(const XEvent& event)
 	{
 		auto duration = std::chrono::system_clock::now().time_since_epoch();
 		auto startTS = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
-		service_->onEvent(event);
+		if (isAwait_)
+		{
+			service_->onEvent(event);
+		}
+		else
+		{
+			service_->focusEvent_ = &event;
+			service_->onEvent(event);
+			service_->focusEvent_ = 0;
+		}
 
 		duration = std::chrono::system_clock::now().time_since_epoch();
 		auto currentTS = std::chrono::duration_cast<std::chrono::milliseconds>(duration).count();
@@ -150,7 +159,19 @@ void XRobot::onEvent(const XEvent& event)
 	}
 	else
 	{
-		service_->onEvent(event);
+		if (isAwait_)
+		{
+			service_->onEvent(event);
+		}
+		else
+		{
+			service_->focusEvent_ = &event;
+			service_->onEvent(event);
+			service_->focusEvent_ = 0;
+		}
+		//service_->focusEvent_ = &event;
+		//service_->onEvent(event);
+		//service_->focusEvent_ = 0;
 	}
 }
 

@@ -71,5 +71,6 @@ protected:
 	const XEvent* focusEvent_;
 private:
 	XRobot* robot_;
+	friend class XRobot;
 	friend class XServiceSocket;
 };
