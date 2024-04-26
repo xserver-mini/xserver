@@ -17,6 +17,7 @@ set(FILE_HPP
 
 	timer/servicetimer.h
 
+	open/open.h
 	open/opentime.h
 	open/opensocket.h
 	open/socket_os.h

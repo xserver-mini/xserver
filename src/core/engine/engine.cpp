@@ -184,7 +184,7 @@ void XEngine::robotAwait()
 	while (isAwait_)
 	{
 		isIdle_ = true;
-		std::unique_lock<std::mutex> lock(mutex_);
+		std::unique_lock<std::mutex> lock(mutex2_);
 		cv_.wait(lock, [this] { return !eventQueue_.empty(); });
 		isIdle_ = false;
 		while (isAwait_)

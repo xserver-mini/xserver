@@ -55,5 +55,6 @@ protected:
 	bool isRunning_;
 	std::thread* thread_;
 	std::mutex mutex_;
+	std::mutex mutex2_;
 	std::condition_variable cv_;
 };
