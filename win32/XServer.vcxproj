@@ -332,6 +332,7 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
     <ClInclude Include="D:\git\xserver\src\core\socket\socketcentor.h" />
     <ClInclude Include="D:\git\xserver\src\core\socket\socketserver.h" />
     <ClInclude Include="D:\git\xserver\src\core\timer\servicetimer.h" />
+    <ClInclude Include="D:\git\xserver\src\core\open\open.h" />
     <ClInclude Include="D:\git\xserver\src\core\open\opentime.h" />
     <ClInclude Include="D:\git\xserver\src\core\open\opensocket.h" />
     <ClInclude Include="D:\git\xserver\src\core\open\socket_os.h" />

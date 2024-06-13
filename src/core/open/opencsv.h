@@ -46,26 +46,27 @@ public:
 
 protected:
     typedef const std::initializer_list<std::string> List;
-    std::vector<CSVLine> lines_;
+    std::vector<CSVLine*> lines_;
     std::string emptyStr_;
     friend class CSVLine;
 public:
+    OpenCSV();
+    ~OpenCSV();
+    OpenCSV(const List& list);
+    void operator=(const List& list);
 
-    OpenCSV() {}
-    OpenCSV(List& list);
-    void operator=(List& list);
-
-    //OpenCSV(OpenCSV& csv);
-    //void operator=(OpenCSV& csv);
+    OpenCSV(const Line& line);
+    void operator=(const Line& line);
 
     inline bool empty() { return lines_.empty(); }
     inline size_t size() { return lines_.size(); }
-
     CSVLine& operator[](size_t idx);
     void operator>>(std::string& output);
     void operator<<(const std::string& output);
+    void sort(const std::string& key);
 
-    inline std::vector<CSVLine>& lines() { return lines_; }
+
+    inline std::vector<CSVLine*>& lines() { return lines_; }
 };
 
 };

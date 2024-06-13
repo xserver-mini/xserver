@@ -123,6 +123,7 @@ struct XHttp
     bool responseData(const char* data, size_t size);
     bool requestData(const char* data, size_t size);
     inline void operator=(const std::string& url) { url_ = url; }
+    void setContentType(const std::string& ctype);
 
     void clear()
     {
@@ -150,8 +151,12 @@ struct XHttp
         headers_.clear();
     }
 
+protected:
+    static const std::string GetContentType(const char* fileExt);
+
 private:
     std::string ip_;
+    static const std::map<std::string, std::string> ContentTypes_;
 };
 
 ////////////XHttpResponse//////////////////////
@@ -165,9 +170,7 @@ struct XHttpResponse : public XHttp
     void response(int code, const std::string& ctype, const std::string& buffer);
     void response404Html();
     void send();
-    static const std::string GetContentType(const char* fileExt);
-private:
-    static const std::map<std::string, std::string> ContentTypes_;
+    
 };
 
 ////////////XHttpRequest//////////////////////
@@ -195,101 +198,5 @@ public:
     int listenPort_;
 };
 
-//typedef bool (*OpenHttpHandle)(XHttpRequest&, XHttpResponse&);
 
-
-
-//struct XEventHttpNotice : public XEventMsg
-//{
-//    enum {
-//        EEventID = 2000
-//    };
-//    virtual inline int getEventId() const
-//    {
-//        return EEventID;
-//    }
-//    virtual const char* getEventName() const
-//    {
-//        return "XEventHttpNotice";
-//    }
-//
-//    bool isHttps_;
-//    std::string ip_;
-//    unsigned int port_;
-//    unsigned int port1_;
-//    std::string keyFile_;
-//    std::string certFile_;
-//    std::vector<int> vectAccepts_;
-//    std::vector<int> vectClients_;
-//};
-
-
-
-///////////////////////////////OpenHttpServer//////////////////////
-//////////////////////////////////////////////////////////////////
-//
-// 
-// 
-// 
-//////////////OpenHttpServerMsg//////////////////////
-//struct OpenHttpServerMsg : public OpenMsgProtoMsg
-//{
-//    bool isHttps_;
-//    std::string ip_;
-//    unsigned int port_;
-//    unsigned int port1_;
-//    std::string keyFile_;
-//    std::string certFile_;
-//    OpenHttpHandle handle_;
-//    std::vector<int> vectAccepts_;
-//    std::vector<int> vectClients_;
-//
-//    OpenHttpServerMsg() :isHttps_(false), port_(80), port1_(0), handle_(0) {}
-//    static inline int MsgId() { return (int)(int64_t)(void*)&MsgId; }
-//    virtual inline int msgId() const { return OpenHttpServerMsg::MsgId(); }
-//};
-//
-//////////////OpenHttpRegisterMsg//////////////////////
-//struct OpenHttpRegisterMsg : public OpenMsgProtoMsg
-//{
-//    int fd_;
-//    OpenHttpServerMsg serverInfo_;
-//
-//    static inline int MsgId() { return (int)(int64_t)(void*)&MsgId; }
-//    virtual inline int msgId() const { return OpenHttpRegisterMsg::MsgId(); }
-//};
-//
-//////////////OpenHttpAcceptMsg//////////////////////
-//struct OpenHttpAcceptMsg : public OpenMsgProtoMsg
-//{
-//    bool isHttps_;
-//    int clientId_;
-//    std::string ip_;
-//    unsigned int port_;
-//    unsigned int port1_;
-//    OpenHttpHandle handle_;
-//
-//    OpenHttpAcceptMsg() : isHttps_(false), port_(80), port1_(0), handle_(0), clientId_(-1) {}
-//    static inline int MsgId() { return (int)(int64_t)(void*)&MsgId; }
-//    virtual inline int msgId() const { return OpenHttpAcceptMsg::MsgId(); }
-//};
-//
-//////////////OpenHttpNoticeMsg//////////////////////
-//struct OpenHttpNoticeMsg : public OpenMsgProtoMsg
-//{
-//    int fd_;
-//    OpenHttpAcceptMsg clientInfo_;
-//
-//    static inline int MsgId() { return (int)(int64_t)(void*)&MsgId; }
-//    virtual inline int msgId() const { return OpenHttpNoticeMsg::MsgId(); }
-//};
-//
-//////////////OpenHttpSendResponseMsg//////////////////////
-//struct OpenHttpSendResponseMsg : public OpenMsgProtoMsg
-//{
-//    int fd_;
-//
-//    static inline int MsgId() { return (int)(int64_t)(void*)&MsgId; }
-//    virtual inline int msgId() const { return OpenHttpSendResponseMsg::MsgId(); }
-//};
 

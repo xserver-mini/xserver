@@ -738,10 +738,10 @@ OpenJson& OpenJson::array(size_t idx)
 {
     if (type_ != ARRAY)
     {
-        if (type_ == OBJECT)
-        {
-            Log("JsonNode must be ARRAY, not OBJECT");
-        }
+        //if (type_ == OBJECT)
+        //{
+        //    Log("JsonNode must be ARRAY, not OBJECT");
+        //}
         type_ = ARRAY;
     }
     else
@@ -1192,6 +1192,11 @@ void OpenJson::readObject()
         }
         context_->offset_ = idx_;
         keyNode->read(context_);
+        if (keyNode->len_ > 99999999)
+        {
+            throwError(("read key error. idx_=" + std::to_string(idx_)).data());
+            return;
+        }
         idx_ = keyNode->idx_ + keyNode->len_;
         if (!checkCode(':'))
         {
@@ -1203,6 +1208,11 @@ void OpenJson::readObject()
         valNode->key_ = keyNode;
         context_->offset_ = idx_;
         valNode->read(context_);
+        if (valNode->len_ > 99999999)
+        {
+            throwError(("read value error. idx_=" + std::to_string(idx_)).data());
+            return;
+        }
         idx_ = valNode->idx_ + valNode->len_;
         addNode(valNode);
 

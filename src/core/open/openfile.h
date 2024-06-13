@@ -15,6 +15,17 @@
 #include <stdio.h>
 #include <errno.h>
 #include <string>
+#include <vector>
+
+#if defined(_WIN32)
+struct dirent {
+    char d_name[256];
+};
+typedef void* DIR;
+#else
+#include <dirent.h>
+#endif
+#include <stdint.h>
 
 namespace open
 {
@@ -31,6 +42,12 @@ struct OpenFile
     static bool IsDir(const std::string& filePath);
     static bool MakeDir(const std::string& filePath);
     static bool Commit(FILE* file);
+
+    static DIR* OpenDir(const std::string& filePath);
+    static struct dirent* ReadDir(DIR* dir);
+    static int32_t CloseDir(DIR* dir);
+    static bool ListDir(const std::string& filePath, std::vector<std::string>& fileNames);
+
 };
 
 };

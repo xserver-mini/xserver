@@ -2,7 +2,6 @@
 #include "httplib.h"
 #include <unordered_map>
 #include "../open/opentime.h"
-//#include "../open/opensocket.h"
 #include "serviceserver.h"
 
 static void Split(const std::string& line, const std::string& split, std::vector<std::string>& vect_items)
@@ -529,7 +528,6 @@ void XHttp::decodeReqHeader()
         }
     }
 
-
     code_ = 200;
 
     line.clear();
@@ -811,6 +809,11 @@ bool XHttp::requestData(const char* data, size_t size)
     return false;
 }
 
+void XHttp::setContentType(const std::string& ctype)
+{
+    headers_["content-type"] = GetContentType(ctype.data());
+}
+
 bool XHttp::responseData(const char* data, size_t size)
 {
     //cacheFile_
@@ -1004,7 +1007,7 @@ void XHttpResponse::response404Html()
 {
     response(".html", "<html><body><h1>404</h1><p>Sorry, We can't provide this service! By OpenLinyou</p></body></html>");
 }
-const std::string XHttpResponse::GetContentType(const char* fileExt)
+const std::string XHttp::GetContentType(const char* fileExt)
 {
     auto iter = ContentTypes_.find(fileExt);
     if (iter != ContentTypes_.end())
@@ -1031,7 +1034,7 @@ void XHttpResponse::send()
 }
 
 ////////////XHttpRequest//////////////////////
-const std::map<std::string, std::string> XHttpResponse::ContentTypes_ = {
+const std::map<std::string, std::string> XHttp::ContentTypes_ = {
     {".html", "text/html;charset=utf-8"},
     {".css", "text/css;charset=utf-8"},
     {".plain", "text/plain;charset=utf-8"},

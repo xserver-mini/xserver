@@ -622,6 +622,31 @@ int64_t OpenTime::AlignDay(int64_t unixtime, int timezone)
     return unixtime - unixtime % 86400 - timezone * 3600;
 }
 
+int64_t OpenTime::AlignMinute(int64_t unixtime)
+{
+    return unixtime - unixtime % 60;
+}
+
+int64_t OpenTime::Align5Minute(int64_t unixtime)
+{
+    return unixtime - unixtime % 300;
+}
+
+int64_t OpenTime::Align15Minute(int64_t unixtime)
+{
+    return unixtime - unixtime % 900;
+}
+
+int64_t OpenTime::Align30Minute(int64_t unixtime)
+{
+    return unixtime - unixtime % 1800;
+}
+
+int64_t OpenTime::Align60Minute(int64_t unixtime)
+{
+    return unixtime - unixtime % 3600;
+}
+
 std::string OpenTime::ToString(int64_t unixtime, int timezone)
 {
     OpenTime dt(unixtime, timezone);

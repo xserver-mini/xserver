@@ -177,6 +177,9 @@
     <ClInclude Include="D:\git\xserver\src\core\timer\servicetimer.h">
       <Filter>core\timer</Filter>
     </ClInclude>
+    <ClInclude Include="D:\git\xserver\src\core\open\open.h">
+      <Filter>core\open</Filter>
+    </ClInclude>
     <ClInclude Include="D:\git\xserver\src\core\open\opentime.h">
       <Filter>core\open</Filter>
     </ClInclude>

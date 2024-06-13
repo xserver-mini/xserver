@@ -26,6 +26,7 @@ set(FILE_HPP
 	open/openfile.h
 	open/opencsv.h
 	open/openstring.h
+	open/openfsm.h
 
 	utils/spinlock.h
 	utils/logger.h
@@ -68,6 +69,7 @@ set(FILE_CPP
 	open/openfile.cpp
 	open/opencsv.cpp
 	open/openstring.cpp
+	open/openfsm.cpp
 
 	utils/logger.cpp
 	utils/config.cpp

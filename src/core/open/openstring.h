@@ -23,15 +23,20 @@ namespace open
 struct OpenString
 {
     static void Split(const std::string& line, const std::string& split, std::vector<std::string>& vect_items);
-    static std::string Tolower(const std::string& str);
-    static std::string Toupper(const std::string& str);
+    static std::string ToLower(const std::string& str);
+    static std::string ToUpper(const std::string& str);
     static std::string ToString(double value);
     static std::string ToString(int32_t value);
     static std::string ToString(int64_t value);
 
-    static std::string CodeTimeToKey(const std::string& code, int64_t dtime);
-    static std::string TimeCodeToKey(int64_t dtime, const std::string& code);
+    //static std::string CodeTimeToKey(const std::string& code, int64_t dtime);
+    //static std::string TimeCodeToKey(int64_t dtime, const std::string& code);
+
+    static std::string CodeTimeKey(const std::string& code, int64_t dtime);
+    //static std::string TimeCodeKey(int64_t dtime, const std::string& code);
+
     static std::string TimeToKey(int64_t dtime);
+    static bool GreaterEqual(const std::string& value1, const std::string& value2);
 
     static std::string UrlEncode(const std::string& str);
     static std::string UrlDecode(const std::string& str);

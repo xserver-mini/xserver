@@ -103,6 +103,25 @@ std::string OpenFile::GetWriteDirPath()
     return "./";
 }
 
+bool OpenFile::ListDir(const std::string& filePath, std::vector<std::string>& fileNames)
+{
+    DIR* pDir = OpenDir(filePath);
+    if (!pDir) return false;
+
+    struct dirent* pDirent;
+    while ((pDirent = ReadDir(pDir)) != NULL)
+    {
+        if (strcmp(pDirent->d_name, ".") == 0 || strcmp(pDirent->d_name, "..") == 0)
+            continue;
+
+        fileNames.push_back(pDirent->d_name);
+    }
+    CloseDir(pDir);
+    return true;
+}
+
+
+
 #if defined(WIN32) || defined(_WIN32) || defined(WIN64) || defined(_WIN64)
 
 std::wstring StringMultiByteToWideChar(const std::string& strA)
@@ -284,6 +303,69 @@ bool OpenFile::MakeDir(const std::string& filePath)
     return false;
 }
 
+typedef struct DIR_int_s {
+    void* find_handle;
+    WIN32_FIND_DATAW find_data;
+    struct dirent    entry;
+    uint8_t          end;
+} DIR_int;
+
+DIR* OpenFile::OpenDir(const std::string& filePath)
+{
+    if (filePath.empty())
+        return NULL;
+
+    std::string fixedPath = JoinPath(filePath, "*");
+    std::wstring wFixedPathh = StringUtf8ToWideChar(fixedPath);
+
+    WIN32_FIND_DATAW find_data;
+    void* handle = FindFirstFileW(wFixedPathh.data(), &find_data);
+    if (handle == INVALID_HANDLE_VALUE)
+        return NULL;
+
+    DIR_int* dir_int = (DIR_int*)malloc(sizeof(DIR_int));
+    if (dir_int == NULL)
+        return NULL;
+
+    dir_int->find_handle = handle;
+    dir_int->end = 0;
+    memcpy(&dir_int->find_data, &find_data, sizeof(dir_int->find_data));
+    return (DIR*)dir_int;
+}
+
+struct dirent* OpenFile::ReadDir(DIR* dir)
+{
+    if (dir == NULL)
+        return NULL;
+
+    DIR_int* dir_int = (DIR_int*)dir;
+    if (dir_int->end)
+        return NULL;
+
+    WideCharToMultiByte(CP_UTF8, 0, dir_int->find_data.cFileName, -1, dir_int->entry.d_name, sizeof(dir_int->entry.d_name), NULL, NULL);
+
+    if (FindNextFileW(dir_int->find_handle, &dir_int->find_data) == 0) {
+        if (GetLastError() != ERROR_NO_MORE_FILES)
+            return NULL;
+
+        dir_int->end = 1;
+    }
+    return &dir_int->entry;
+}
+
+int32_t OpenFile::CloseDir(DIR* dir)
+{
+    if (dir == NULL)
+        return -1;
+
+    DIR_int* dir_int = (DIR_int*)dir;
+    if (dir_int->find_handle != INVALID_HANDLE_VALUE)
+        FindClose(dir_int->find_handle);
+
+    free(dir_int);
+    return 0;
+}
+
 #include <io.h>
 bool OpenFile::Commit(FILE* file)
 {
@@ -296,7 +378,17 @@ bool OpenFile::Commit(FILE* file)
 }
 
 #else
+#include <sys/types.h>
+#include <sys/stat.h>
 
+#if defined(__APPLE__) || defined(__unix__) || defined(__riscos__)
+#  include <utime.h>
+#  include <unistd.h>
+#endif
+#if defined(__APPLE__)
+#  include <mach/clock.h>
+#  include <mach/mach.h>
+#endif
 
 bool OpenFile::IsExist(const std::string& filePath)
 {
@@ -344,6 +436,30 @@ bool OpenFile::MakeDir(const std::string& filePath)
         return false;
     }
     return IsDir(filePath);
+}
+
+DIR* OpenFile::OpenDir(const std::string& filePath)
+{
+    return opendir(path);
+}
+
+struct dirent* OpenFile::ReadDir(DIR* dir)
+{
+    if (dir == NULL)
+        return NULL;
+
+    return readdir(dir);
+}
+
+int32_t OpenFile::CloseDir(DIR* dir)
+{
+    if (dir == NULL)
+        return -1;
+
+    if (closedir(dir) == -1)
+        return MZ_INTERNAL_ERROR;
+
+    return 0;
 }
 
 bool OpenFile::Commit(FILE* file)

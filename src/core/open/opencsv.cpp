@@ -12,6 +12,7 @@
 #include <stdio.h>
 #include <string>
 #include <vector>
+#include <map>
 
 namespace open
 {
@@ -37,7 +38,7 @@ std::string& OpenCSV::CSVLine::operator[](const std::string& key)
         assert(false);
         return emptyStr;
     }
-    CSVLine& keyLine = csv->lines_[0];
+    CSVLine& keyLine = *csv->lines_[0];
     size_t idx = 0;
     for (; idx < keyLine.size(); ++idx)
     {
@@ -52,41 +53,74 @@ std::string& OpenCSV::CSVLine::operator[](const std::string& key)
     return csv->emptyStr_;
 }
 
-OpenCSV::OpenCSV(List& list)
+//OpenCSV
+OpenCSV::OpenCSV()
 {
+    lines_.reserve(1024);
+}
+
+OpenCSV::~OpenCSV()
+{
+    for (size_t i = 0; i < lines_.size(); i++)
+    {
+        delete lines_[i];
+    }
+    lines_.clear();
+}
+
+OpenCSV::OpenCSV(const List& list)
+{
+    lines_.reserve(1024);
     if (list.size() > 0)
     {
-        lines_.resize(lines_.size() + 1, CSVLine(this));
-        lines_.back().line() = list;
+        auto line = new CSVLine(this);
+        line->line() = list;
+        lines_.push_back(line);
     }
 }
 
-void OpenCSV::operator=(List& list)
+void OpenCSV::operator=(const List& list)
 { 
     if (list.size() > 0)
     {
-        lines_.resize(lines_.size() + 1, CSVLine(this));
-        lines_.back().line() = list;
+        auto line = new CSVLine(this);
+        line->line() = list;
+        lines_.push_back(line);
     }
 }
 
-//OpenCSV::OpenCSV(OpenCSV& csv)
-//{
-//    lines_ = csv.lines();
-//}
+OpenCSV::OpenCSV(const Line& line)
+{
+    lines_.reserve(1024);
+    if (line.size() > 0)
+    {
+        auto row = new CSVLine(this);
+        row->line() = line;
+        lines_.push_back(row);
+    }
+}
 
-//void OpenCSV::operator=(OpenCSV& csv)
-//{
-//    lines_ = csv.lines();
-//}
+void OpenCSV::operator=(const Line& line)
+{
+    if (line.size() > 0)
+    {
+        auto row = new CSVLine(this);
+        row->line() = line;
+        lines_.push_back(row);
+    }
+}
 
 OpenCSV::CSVLine& OpenCSV::operator[](size_t idx)
 {
     if (idx >= lines_.size())
     {
-        lines_.resize(idx + 1, CSVLine(this));
+        while (idx >= lines_.size())
+        {
+            auto row = new CSVLine(this);
+            lines_.push_back(row);
+        }
     }
-    return lines_[idx];
+    return *lines_[idx];
 }
 
 void OpenCSV::operator>>(std::string& output)
@@ -94,10 +128,10 @@ void OpenCSV::operator>>(std::string& output)
     std::string str;
     for (auto& line : lines_)
     {
-        if (line.empty()) continue;
-        for (size_t j = 0; j < line.size(); ++j)
+        if (line->empty()) continue;
+        for (size_t j = 0; j < line->size(); ++j)
         {
-            str.append(j > 0 ? "," + line[j] : line[j]);
+            str.append(j > 0 ? "," + (*line)[j] : (*line)[j]);
         }
         str.append("\n");
     }
@@ -128,7 +162,7 @@ void OpenCSV::operator<<(const std::string& input)
     {
         if (buffer[i] == '\n')
         {
-            if (!lines_.back().empty())
+            if (!lines_.back()->empty())
             {
                 ++row;
             }
@@ -141,6 +175,39 @@ void OpenCSV::operator<<(const std::string& input)
             continue;
         }
         (*this)[row][column].push_back(buffer[i]);
+    }
+}
+
+void OpenCSV::sort(const std::string& key)
+{
+    if (lines_.empty())
+    {
+        assert(false);
+        return;
+    }
+    CSVLine& keyLine = *lines_[0];
+    size_t idx = 0;
+    for (; idx < keyLine.size(); ++idx)
+    {
+        if (keyLine[idx] == key) break;
+    }
+    if (idx >= keyLine.size())
+    {
+        assert(false);
+        return;
+    }
+    std::multimap<std::string, CSVLine*> sortMap;
+    CSVLine* row = 0;
+    for (size_t i = 1; i < lines_.size(); i++)
+    {
+        row = lines_[i];
+        auto& key = (*row)[idx];
+        sortMap.insert(std::pair<std::string, CSVLine*>(key, row));
+    }
+    size_t i = 1;
+    for (auto& iter : sortMap)
+    {
+        lines_[i++] = iter.second;
     }
 }
 

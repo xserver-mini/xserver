@@ -142,6 +142,12 @@ public:
     }
 
     static int64_t AlignDay(int64_t unixtime, int timezone = OPENTIME_TIMEZONE);
+    static int64_t AlignMinute(int64_t unixtime);
+    static int64_t Align5Minute(int64_t unixtime);
+    static int64_t Align15Minute(int64_t unixtime);
+    static int64_t Align30Minute(int64_t unixtime);
+    static int64_t Align60Minute(int64_t unixtime);
+
     static std::string ToString(int64_t utctime, int timezone = OPENTIME_TIMEZONE);
     static std::string MilliToString(int64_t milliSecond, int timezone = OPENTIME_TIMEZONE);
     static void Sleep(int64_t milliSecond);

@@ -68,7 +68,7 @@ void OpenString::Split(const std::string& line, const std::string& split, std::v
     }
 }
 
-std::string OpenString::Tolower(const std::string& str)
+std::string OpenString::ToLower(const std::string& str)
 {
     std::string ret = str;
     for (size_t i = 0; i < ret.size(); ++i)
@@ -78,7 +78,7 @@ std::string OpenString::Tolower(const std::string& str)
     return ret;
 }
 
-std::string OpenString::Toupper(const std::string& str)
+std::string OpenString::ToUpper(const std::string& str)
 {
     std::string ret = str;
     for (size_t i = 0; i < ret.size(); ++i)
@@ -109,29 +109,72 @@ std::string OpenString::ToString(int64_t value)
     return std::to_string(value);
 }
 
-std::string OpenString::CodeTimeToKey(const std::string& code, int64_t dtime)
+//std::string OpenString::CodeTimeToKey(const std::string& code, int64_t dtime)
+//{
+//    if (dtime == 0)
+//    {
+//        return code + "_" + TimeToKey(dtime);
+//    }
+//    dtime = OpenTime::AlignDay(dtime);
+//    std::string key = code + "_" + TimeToKey(dtime);
+//    return key;
+//}
+
+//std::string OpenString::TimeCodeToKey(int64_t dtime, const std::string& code)
+//{
+//    dtime = OpenTime::AlignDay(dtime);
+//    std::string key = TimeToKey(dtime) + "_" + code;
+//    return key;
+//}
+
+std::string OpenString::CodeTimeKey(const std::string& code, int64_t dtime)
 {
     if (dtime == 0)
     {
-        return code + "_" + TimeToKey(dtime);
+        assert(false);
     }
-    dtime = OpenTime::AlignDay(dtime);
     std::string key = code + "_" + TimeToKey(dtime);
     return key;
 }
 
-std::string OpenString::TimeCodeToKey(int64_t dtime, const std::string& code)
-{
-    dtime = OpenTime::AlignDay(dtime);
-    std::string key = TimeToKey(dtime) + "_" + code;
-    return key;
-}
+//std::string OpenString::TimeCodeKey(int64_t dtime, const std::string& code)
+//{
+//    if (dtime == 0)
+//    {
+//        assert(false);
+//    }
+//    std::string key = TimeToKey(dtime) + "_" + code;
+//    return key;
+//}
 
 std::string OpenString::TimeToKey(int64_t dtime)
 {
     std::string ret = std::to_string(dtime);
     while (ret.size() < 14) ret.insert(0, "0");
     return ret;
+}
+
+bool OpenString::GreaterEqual(const std::string& value1, const std::string& value2)
+{
+    size_t len = value1.size() <= value2.size() ? value1.size() : value2.size();
+    for (size_t i = 0; i < len; i++)
+    {
+        auto& c1 = value1[i];
+        auto& c2 = value2[i];
+        if (c1 == c2)
+        {
+            continue;
+        }
+        if (c1 > c2)
+        {
+            return true;
+        }
+        else if (c1 < c2)
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
 static int hex2dec(char c)
